@@ -1,0 +1,31 @@
+
+<div class="row txt-center margin-vertical-small ng-cloak" ng-show="noAccount">
+   <div class="alert alert-warning margin-center-horizontal width-60">
+     You don't have access to a single account, To solve this contact <a href="/$$space/support">support.</a>
+   </div>
+</div>
+<div class="container" ng-show="!noAccount">
+    <div class="span11 newDecks newDecks2">
+
+        </div>
+        <div class="col-md-4 boxes margin-vertical-large clear-none txt-left font color2 clear-left">
+          <p>
+            <a href="MachineDeck">Machines</a>
+          </p>
+          <a href="MachineDeck"><img src=".files/img/icon2.png" /></a>
+          <div class="padding-right-none txt-justify">
+            Configure, launch and manage your Virtual Machines. Automate using the simple API.
+          </div>
+        </div>
+        <div class="col-md-2 boxes margin-vertical-large txt-center font color5"></div>
+        <div class="col-md-4 boxes margin-vertical-large txt-left font color5" ng-show="currentUser.acl.cloudspace > 1">
+          <p>
+            <a href="NetworkDeck">Defense Shield</a>
+          </p>
+          <a href="NetworkDeck"><img src=".files/img/icon5.png" /></a>
+            <div class="padding-right-none txt-justify">
+              Your private Defense Shield providing privacy and secure access to your Cloud Space.
+            </div>
+        </div>
+    </div>
+</div>
