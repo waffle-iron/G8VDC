@@ -30,6 +30,10 @@ cloudscalers
     $routeProvider.when('/Billing', {templateUrl: 'Portal/Admin/AccountSettings/Billing.html', controller: 'BillingController'});
     $routeProvider.when('/Profile', {templateUrl: 'Portal/Admin/Profile/Profile.html', controller: 'UsersController'});
     $routeProvider.when('/Docs', {templateUrl: 'Portal/Docs/Docs.html'});
+    $routeProvider.when('/Docs/access-your-cloud-space-using-openvpn', {templateUrl: 'Portal/Docs/TechnicalTutorials/access-your-cloud-space-using-openvpn.html'});
+    $routeProvider.when('/Docs/enable-root-access-on-ubuntu-over-ssh', {templateUrl: 'Portal/Docs/TechnicalTutorials/enable-root-access-on-ubuntu-over-ssh.html'});
+    $routeProvider.when('/Docs/getting-started-with-jumpscale', {templateUrl: 'Portal/Docs/TechnicalTutorials/getting-started-with-jumpscale.html'});
+    $routeProvider.when('/Docs/how-to-configure-ubuntu-to-connect-to-openvpn', {templateUrl: 'Portal/Docs/TechnicalTutorials/how-to-configure-ubuntu-to-connect-to-openvpn/tutorial.html'});
 
     $routeProvider.otherwise({redirectTo: '/list'});
   }])

@@ -1,0 +1,77 @@
+<h1>How to configure Ubuntu to connect to OpenVPN</h1>
+<ol>
+<li>
+  Open Terminal <br>
+  In Unity <br>
+  Dash -> Search for Terminal <br>
+  In Gnome <br>
+  Application menu -> Accessories -> Terminal <br>
+  or <br>
+  Keyboard Shortcut:
+  <code>Ctrl + Alt + T</code>
+</li>
+<li>
+  Run the following command
+  <code>apt-get install network-manager-openvpn</code>
+</li>
+<li>
+  Right-click on the network icon on the system tray
+</li>
+<li>
+  Choose: "Edit Connections"
+</li>
+<li>
+  Click Add <br>
+  <img src="/Portal/Docs/TechnicalTutorials/how-to-configure-ubuntu-to-connect-to-openvpn/image.png">
+</li>
+<li>
+  Choose Connection Type : openvpn <br>
+  <img src="/Portal/Docs/TechnicalTutorials/how-to-configure-ubuntu-to-connect-to-openvpn/image1.png">
+</li>
+<li>
+  The following window will open: <br>
+  <img src="/Portal/Docs/TechnicalTutorials/how-to-configure-ubuntu-to-connect-to-openvpn/image2.png">
+</li>
+<ol>
+<li>
+  Enter the connection name as example "VPN connection"
+</li>
+<li>
+  Enter the Gateway
+</li>
+<li>
+  Under the Authentication -> Type -> choose Passowrd <br>
+  <img src="/Portal/Docs/TechnicalTutorials/how-to-configure-ubuntu-to-connect-to-openvpn/image3.png">
+</li>
+<li>
+  Download our CA certificate
+</li>
+<li>
+  Enter the username and the passowrd
+</li>
+<li>
+  Import the CA certificate you just downloaded
+</li>
+</ol>
+<li>
+  Click "Advanced" the following window will open: <br>
+  <img src="/Portal/Docs/TechnicalTutorials/how-to-configure-ubuntu-to-connect-to-openvpn/image4.png">
+</li>
+<ol>
+<li>
+  Set "Use Custom gateway port " to 999
+</li>
+<li>
+  Mark "Use a TCP connection"
+</li>
+<li>
+  Click "OK" and then Save
+</li>
+</ol>
+<li>
+  Right-click on the network icon on the system tray
+</li>
+<li>
+  Choose " VPN Connection then choose the new connection
+</li>
+</ol>
