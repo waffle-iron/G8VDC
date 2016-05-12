@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="css/media-queries.css" charset="utf-8">
     <link rel="stylesheet" href=".files/lib/angular-szn-autocomplete/angular-szn-autocomplete.css" charset="utf-8">
     <link rel="stylesheet" href="css/autocomplete.css" charset="utf-8">
-    <!-- {{include:loader}} -->
+    <div ng-include src="'loader.html'"></div>
   </head>
   <body>
 
@@ -37,7 +37,7 @@
         </script>
 
       <div ng-include src="'header.html'"></div>
-      <!-- {{include:Tour}} -->
+      <div ng-include src="'/Portal/Decks/Tour.html'"></div>
 
         <div class="main white relative">
 
@@ -121,6 +121,7 @@
       <script src='.files/swagger/lib/marked.js' type='text/javascript'></script>
 
       <script src=".files/js/swaggerdirective.js" type="text/javascript"></script>
+      <div ng-include src="'/Portal/Docs/left-side-nav.html'"></div>
       <div class="" ng-view></div>
       <!-- {content} -->
       </div>

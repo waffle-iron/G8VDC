@@ -29,6 +29,7 @@ cloudscalers
     $routeProvider.when('/Consumption', {templateUrl: 'Portal/Admin/Consumption/Consumption.html', controller: 'AccountController'});
     $routeProvider.when('/Billing', {templateUrl: 'Portal/Admin/AccountSettings/Billing.html', controller: 'BillingController'});
     $routeProvider.when('/Profile', {templateUrl: 'Portal/Admin/Profile/Profile.html', controller: 'UsersController'});
+    $routeProvider.when('/Docs', {templateUrl: 'Portal/Docs/Docs.html'});
 
     $routeProvider.otherwise({redirectTo: '/list'});
   }])

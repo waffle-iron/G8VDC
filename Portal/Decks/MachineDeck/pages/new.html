@@ -15,10 +15,12 @@ Configure your virtual machine by choosing your package, server OS and additiona
         <h2>OS Image</h2>
 
     </div>
-    <div class="controls controls2">{{include:image_list}}</div>
+    <div class="controls controls2">
+      <div ng-include src="'Portal/Decks/MachineDeck/includes/image_list.html'"></div>
+    </div>
     <div class="machineWrap">
         <h2>Package *:</h2>
-        {{include:packages_list}}
+        <div ng-include src="'/Portal/Decks/MachineDeck/includes/packages_list.html'"></div>
     </div>
 
     <div>

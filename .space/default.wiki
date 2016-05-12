@@ -16,7 +16,7 @@
 {{css:/$$space/.files/css/media-queries.css}}
 {{css:/$$space/.files/lib/angular-szn-autocomplete/angular-szn-autocomplete.css}}
 {{css:/$$space/.files/css/autocomplete.css}}
-{{include:loader}}
+<!-- loader -->
 {{html:
   <div id="wrap" class="sticky" ng-app="cloudscalers" ng-controller="AuthenticatedSessionController">
     <div ng-controller="OpenvCloudTourController">
@@ -33,19 +33,19 @@
           </div>
         </script>
       }}
-      {{include:header}}
-      {{include:Tour}}
+      <div ng-include src="'header.html'"></div>
+      <!-- Tour -->
       {{html:
         <div class="main white relative">
       }}
-      {{include:side-nav}}
+      <!-- side-nav -->
       {{html:
         <div class="main-inner">
           <div class="container">
             <div class="row">
       }}
       @col 10
-        {{include:jslibs}}
+        <!-- jslibs -->
         {content}
       @divend
       @divend
@@ -59,4 +59,4 @@
       }}
     @divend
 @divend
-{{include:footer}}
+<!-- footer -->

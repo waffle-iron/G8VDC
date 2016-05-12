@@ -300,10 +300,10 @@ Your Defense shield assigns a fix IP address during the initial OS boot.">
                   </ul>
                   <div class="marginTopXlarge machine-disks">
                     <div ng-show="tabState === 'currentDisks'">
-                      {{include:storage_list}}
+                      <div ng-include src="'/Portal/Decks/MachineDeck/includes/storage_list.html'"></div>
                     </div>
                     <div ng-show="tabState === 'createDisks'">
-                        {{include:create_disk}}
+                        <div ng-include src="'/Portal/Decks/MachineDeck/includes/create_disk.html'"></div>
                     </div>
                   </div>
                 </div>
@@ -379,17 +379,17 @@ Your Defense shield assigns a fix IP address during the initial OS boot.">
           </tab>
           <tab heading="Change Log" active="tabactive.changelog">
             <div id="logging" class="tab-pane">
-                {{include:machine_history}}
+                <div ng-include src="'/Portal/Decks/MachineDeck/includes/machine_history.html'"></div>
             </div>
           </tab>
           <tab heading="Sharing" active="tabactive.sharing">
             <div id="sharing" class="tab-pane">
-                {{include:machine_share}}
+              <div ng-include src="'/Portal/Decks/MachineDeck/includes/machine_share.html'"></div>
             </div>
           </tab>
           <tab heading="Port Forwards" active="tabactive.portForwards">
             <div id="portForwards" class="tab-pane">
-                {{include:machine_portforwards}}
+                <div ng-include src="'/Portal/Decks/MachineDeck/includes/machine_portforwards.html'"></div>
             </div>
           </tab>
     </tabset>
