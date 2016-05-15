@@ -34,6 +34,9 @@ cloudscalers
     $routeProvider.when('/Docs/enable-root-access-on-ubuntu-over-ssh', {templateUrl: 'Portal/Docs/TechnicalTutorials/enable-root-access-on-ubuntu-over-ssh.html'});
     $routeProvider.when('/Docs/getting-started-with-jumpscale', {templateUrl: 'Portal/Docs/TechnicalTutorials/getting-started-with-jumpscale.html'});
     $routeProvider.when('/Docs/how-to-configure-ubuntu-to-connect-to-openvpn', {templateUrl: 'Portal/Docs/TechnicalTutorials/how-to-configure-ubuntu-to-connect-to-openvpn/tutorial.html'});
+    $routeProvider.when('/Docs/my-first-machine-linux', {templateUrl: 'Portal/Docs/TechnicalTutorials/my-first-machine-linux/tutorial.html'});
+    $routeProvider.when('/Docs/my-first-machine-windows', {templateUrl: 'Portal/Docs/TechnicalTutorials/my-first-machine-windows/tutorial.html'});
+    $routeProvider.when('/Docs/pptp-connection-to-space-from-windows10', {templateUrl: 'Portal/Docs/TechnicalTutorials/pptp-connection-to-space-from-windows10/tutorial.html'});
 
     $routeProvider.otherwise({redirectTo: '/list'});
   }])

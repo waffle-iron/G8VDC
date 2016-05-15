@@ -1,0 +1,69 @@
+<h1 class="title">My First Machine Linux</h1>
+<p>Login to the OpenvCloud User Portal:</p>
+<p>
+  <img src="/Portal/Docs/TechnicalTutorials/my-first-machine-linux/UserPortal.png" style="clear:both;max-width: 1000px">
+</p>
+<p>To create a virtual machine go to Machines, and click on 'Create Machine'</p>
+<p>
+  <img src="/Portal/Docs/TechnicalTutorials/my-first-machine-linux/Machines.png" style="clear:both;max-width: 1000px">
+</p>
+<p>Select your properties in this example:</p>
+<ul>
+   <li>Ubuntu 14.04 64 bit</li>
+   <li>1 GB memory</li>
+   <li>Std disk size</li>
+</ul>
+<p>
+  <img src="/Portal/Docs/TechnicalTutorials/my-first-machine-linux/CreateLinuxMachine.png" style="clear:both;max-width: 1000px">
+</p>
+<p>
+  <img src="/Portal/Docs/TechnicalTutorials/my-first-machine-linux/CreateLinuxMachine2.png" style="clear:both;max-width: 1000px">
+</p>
+<p>Within seconds the machine is active.</p>
+<p>
+  <img src="/Portal/Docs/TechnicalTutorials/my-first-machine-linux/LinuxMachineActions.png" style="clear:both;max-width: 1000px">
+</p>
+<p>
+  <img src="/Portal/Docs/TechnicalTutorials/my-first-machine-linux/LinuxMachineConsole.png" style="clear:both;max-width: 1000px">
+</p>
+<p>Unlike other clouds, OpenvCloud puts every virtual machine behind a private firewall.</p>
+<p>To have access to your virtual machine you can create a VPN connection (see other tutorials) or configure a</p>
+<p>port forwarding (means forward a port from your private firewall to the port on your virtual machine).</p>
+<p>Here we will choose for the later option.</p>
+<p>In order to configure the port forwarding, click on Port Forwards tab:</p>
+<p>
+  <img src="/Portal/Docs/TechnicalTutorials/my-first-machine-linux/LinuxPortForwards.png" style="clear:both;">
+</p>
+<p>Click the Add button, and specify that you want to forward port 3022 to you port 22 on your virtual machine:</p>
+<p>
+  <img src="/Portal/Docs/TechnicalTutorials/my-first-machine-linux/LinuxPortForward3022.png" style="clear:both;">
+</p>
+<p>As a result you will see the below:</p>
+<p>
+  <img src="/Portal/Docs/TechnicalTutorials/my-first-machine-linux/LinuxPortForwards2.png" style="clear:both;">
+</p>
+<p>We will now use an ssh client to connect to the virtual machine e.g. putty</p>
+<p>
+  <img src="/Portal/Docs/TechnicalTutorials/my-first-machine-linux/linux-9.jpg" style="clear:both;">
+</p>
+<p>Your ip address is the one mentioned above in “Public IP” in your portforwards.</p>
+<p>
+  <img src="/Portal/Docs/TechnicalTutorials/my-first-machine-linux/linux-10.jpg" style="clear:both;">
+</p>
+<p>
+  <img src="/Portal/Docs/TechnicalTutorials/my-first-machine-linux/linux-11.jpg" style="clear:both;">
+</p>
+<p>
+  <img src="/Portal/Docs/TechnicalTutorials/my-first-machine-linux/linux-12.jpg" style="clear:both;">
+</p>
+<p>Congrats, you are on your machine.</p>
+<h2 class="title">Tip 1</h2>
+<p>
+  To change password of root user do <code>sudo passwd root</code>
+</p>
+<p>
+  <img src="/Portal/Docs/TechnicalTutorials/my-first-machine-linux/linux-13.jpg" style="clear:both;">
+</p>
+<h2 class="title">Tip 2</h2>
+<p>To connect over ssh you always need to login as cloudscalers and then use <code>sudo -s</code> to get root access.</p>
+<p>You can now deploy whatever apps & through port forwarding (like done above) give access to your apps.</p>
