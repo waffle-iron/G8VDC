@@ -19,8 +19,7 @@ cloudscalers
         controller: 'MachineController'
     });
     $routeProvider.when('/new', {
-        templateUrl: 'Portal/Decks/MachineDeck/pages/new.html',
-        controller: 'MachineCreationController'
+      templateUrl: 'Portal/Decks/MachineDeck/pages/new.html'
     });
     $routeProvider.when('/edit/:machineId/:activeTab?', {
         templateUrl: 'shared/details.html',
