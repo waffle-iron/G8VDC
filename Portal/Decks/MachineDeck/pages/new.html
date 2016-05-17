@@ -1,34 +1,27 @@
 <div ng-controller="MachineController">
-<div ng-controller="MachineCreationController">
-
-
-
-<h1>Create Machine</h1>
-
-Configure your virtual machine by choosing your package, server OS and additional SSD storage.
-
-<div class="form-horizontal">
-    <div class="nameField">
-        <h2>Name:</h2>
-        <input ng-model="machine.name" type="text" class="input-xxlarge"/>
-    </div>
-    <div class="nameField">
-        <h2>Description:</h2>
-            <textarea ng-model="machine.description" type="text" class="input-xxlarge" />
-    </div>
-    <div class="osimage-label nameField clear-both inline-block">
-        <h2>OS Image</h2>
-
-    </div>
-    <div class="controls controls2">
-      <div ng-include src="'Portal/Decks/MachineDeck/includes/image_list.html'"></div>
-    </div>
-    <div class="machineWrap">
+  <div ng-controller="MachineCreationController">
+    <h1>Create Machine</h1>
+    Configure your virtual machine by choosing your package, server OS and additional SSD storage.
+    <div class="form-horizontal">
+      <div class="nameField">
+          <h2>Name:</h2>
+          <input ng-model="machine.name" type="text" class="input-xxlarge"/>
+      </div>
+      <div class="nameField">
+          <h2>Description:</h2>
+          <textarea ng-model="machine.description" type="text" class="input-xxlarge" />
+      </div>
+      <div class="osimage-label nameField clear-both inline-block">
+          <h2>OS Image</h2>
+      </div>
+      <div class="controls controls2">
+        <div ng-include src="'Portal/Decks/MachineDeck/includes/image_list.html'"></div>
+      </div>
+      <div class="machineWrap">
         <h2>Package *:</h2>
         <div ng-include src="'/Portal/Decks/MachineDeck/includes/packages_list.html'"></div>
-    </div>
-
-    <div>
+      </div>
+      <div>
         <h2>Increase disk size to:</h2>
         <div class="machineList" >
             <ul class="storage-size-list inline-block margin-all-none padding-all-none">
@@ -40,13 +33,10 @@ Configure your virtual machine by choosing your package, server OS and additiona
               </li>
             </ul>
         </div>
+      </div>
+      <div class="form-actions">
+          <button class="btn btn-info btn-large mainButton" ng-click="saveNewMachine()" ng-disabled="!isValid()">Create</button>
+      </div>
     </div>
-
-
-    <div class="form-actions">
-        <button class="btn btn-info btn-large mainButton" ng-click="saveNewMachine()" ng-disabled="!isValid()">Create</button>
-    </div>
-</div>
-
-</div>
+  </div>
 </div>

@@ -1940,7 +1940,7 @@ body ul#resources li.resource ul.endpoints li.endpoint ul.operations li.operatio
   font-size: 13px;
   width: 250px;
   height: 137px;
-  background: url(/.files/img/images/machine.jpg) no-repeat;
+  background: url(../img/machine.jpg) no-repeat;
   text-align: center;
   padding: 0px 45px 30px;
   line-height: 20px;
@@ -1954,14 +1954,14 @@ body ul#resources li.resource ul.endpoints li.endpoint ul.operations li.operatio
 .machineList ul li a:hover,
 .storage-size-list button:hover,
 .storage-size-list button.active {
-  background: url(../img/images/machine-hover-dark2.jpg) no-repeat;
+  background: url(../img/machine-hover-dark2.jpg) no-repeat;
   color: #FFF;
 }
 /* line 356, less/custom.less */
 @media -sass-debug-info{filename{font-family:file\:\/\/less\/custom\.less}line{font-family:\00003356}}
 .machineList ul li a.active,
 .packages li a.active-package {
-  background: url(../img/images/machine-hover-dark2.jpg);
+  background: url(../img/machine-hover-dark2.jpg);
   color: #FFF;
 }
 /* line 357, less/custom.less */
@@ -2231,7 +2231,7 @@ body ul#resources li.resource ul.endpoints li.endpoint ul.operations li.operatio
 .machine-disks .disk:hover,
 .machine-disks .disk:active,
 .machine-disks .disk:focus {
-  background: url(/.files/img/images/machine.jpg) no-repeat;
+  background: url(../img/machine.jpg) no-repeat;
   color: #77777b;
   cursor: default;
 }
