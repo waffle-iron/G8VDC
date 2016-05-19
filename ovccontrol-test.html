@@ -1,0 +1,22 @@
+<div id="vdccontrolparent"></div>
+
+<script src="//dev.whmcs.greenitglobe.com:7180/whmcs/assets/js/jquery.min.js"></script>
+<script>
+  // vdccontrolparent > div name which we want to load angular app inside it
+  // index.html > base page of angular app, we can change path depending on app structure
+  $("#vdccontrolparent").load("index.html",function(){
+      $.getScript("vdccontrol.js", function() {
+        angular.element(document).ready(function() {
+          angular.bootstrap(document, ['cloudscalers']);
+
+          var json_web_token  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIn0.qQSekbR5BFKQPc3_7gUiDY6Q9y7RojKzvBTLJ9jGtec';
+          var apiurl = '/restmachine/cloudapi';
+          var vdc_id = 12;
+
+          vdccontrol_init(json_web_token, apiurl, vdc_id);
+        });
+
+      });
+  });
+
+</script>

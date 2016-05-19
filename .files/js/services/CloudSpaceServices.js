@@ -2,6 +2,7 @@
 
 angular.module('cloudscalers.services')
 .factory('CloudSpace', function($http, $q, SessionData) {
+  var vdccontrol = JSON.parse(localStorage.getItem('vdccontrol'));
   $http.defaults.headers.common['Authorization'] = 'Bearer ' + vdccontrol.json_web_token;
   return {
     list: function() {
