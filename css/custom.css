@@ -1349,7 +1349,8 @@ canvas {
 }
 /* line 237, less/custom.less */
 @media -sass-debug-info{filename{font-family:file\:\/\/less\/custom\.less}line{font-family:\00003237}}
-.navbar-default .navbar-nav > li > a {
+.navbar-default .navbar-nav > li > a,
+.cloudspace-nav {
   color: #ECF0F1;
   font-size: 16px;
 }

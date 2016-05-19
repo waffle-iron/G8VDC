@@ -319,6 +319,10 @@
     .navbar-header .collapse, .navbar-toggle { display:block !important; margin: 15px 17px 15px 0 !important;}
     .navbar-header {float:none;}
     .navbar-nav>li>.dropdown-menu {position: static;width: 100%;border: 0;background: transparent;}
+		.cloudspace-nav { padding-top: 15px; }
+}
+@media (min-width: 768px){
+		.cloudspace-nav { padding-top: 15px; }
 }
 @media only screen and (max-width : 992px) {
     .navbar-nav > li {float: none;}

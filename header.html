@@ -2,7 +2,7 @@
   <div class="subnavbar-inner">
     <div class="container relative">
       <a class="logo" href="#/Decks"><img src=".files/img/logo-colored.png" title="Home" class="margin-vertical-small" width='132' height='56'></a>
-      <ul class="stick-top-right">
+      <!-- <ul class="stick-top-right">
         <li class="right">
           <a class="logout sm-font" href="/restmachine//system/oauth/getOauthLogoutURl" >
             <i class="fa fa-lock"></i>
@@ -12,8 +12,9 @@
         <li class="right"><a class="user-name" href="#/Profile" ng-cloak>
           <i class="fa fa-user"></i>
           {[currentUser.username]}
-        </a> </li>
-      </ul>
+        </a>
+        </li>
+      </ul> -->
     </div>
   </div>
   <nav class="navbar navbar-default " role="navigation">
@@ -30,12 +31,12 @@
         <ul class="nav navbar-nav margin-all-none">
           <li><a href="#/decks">Home</a></li>
           <li class="dropdown dropdown-accordion" ng-show="!noAccount">
-            <a id="drop1" role="button" class="margin-left-none padding-left-none" data-toggle="dropdown"
-            tourtip="Manage here your Cloud spaces. The Cloud Space is your private virtual datacenter including your compute, storage and networking capacity" tourtip-placement="bottom" tourtip-step="0">
+            <span class="cloudspace-nav margin-left-none padding-left-none block margin-right-medium"
+              tourtip="Manage here your Cloud spaces. The Cloud Space is your private virtual datacenter including your compute, storage and networking capacity" tourtip-placement="bottom" tourtip-step="0">
               <span ng-cloak>{[currentSpace.accountName]} / {[currentSpace.name]}</span>
-              <b class="caret"></b>
-            </a>
-            <div class="dropdown-menu open-cloudspace-nav" role="menu" aria-labelledby="dLabel">
+              <!-- <b class="caret"></b> -->
+            </span>
+            <!-- <div class="dropdown-menu open-cloudspace-nav" role="menu" aria-labelledby="dLabel">
               <div class="accordionInside padding-bottom-none">
                 <div class="panel-group gray" id="accordion" close-others="false">
                   <div ng-repeat="account in AccountCloudSpaceHierarchy" class="panel panel-default">
@@ -98,7 +99,7 @@
                   </div>
                 </form>
               </script>
-            </div>
+            </div> -->
           </li>
           <li ng-show="currentUser.acl.cloudspace > 0 && !noAccount"><a href="/#/CloudSpaceSettings" class="padding-left-none content-gear"><i class="fa fa-cog margin-right-small" title="Cloud Space settings"></i></a></li>
         </ul>

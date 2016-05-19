@@ -2,6 +2,7 @@
 
 angular.module('cloudscalers.services')
 .factory('CloudSpace', function($http, $q, SessionData) {
+  $http.defaults.headers.common['Authorization'] = 'Bearer ' + vdccontrol.json_web_token;
   return {
     list: function() {
       return $http.get(cloudspaceconfig.apibaseurl + '/cloudspaces/list')
@@ -120,4 +121,3 @@ angular.module('cloudscalers.services')
     }
   };
 });
-

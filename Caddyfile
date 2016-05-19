@@ -1,5 +1,4 @@
 #Temp solution for API communication
 http://0.0.0.0:8888  {
-    # proxy /restmachine https://du-conv-3.demo.greenitglobe.com/
     proxy /restmachine http://ovc.lxc/
 }

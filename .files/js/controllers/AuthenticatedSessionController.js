@@ -16,6 +16,8 @@
     $scope.getUserAccessOnAccount = getUserAccessOnAccount;
     $scope.logout = logout;
     $scope.noAccount = false;
+    // In jquery for single cloudspace case only before angular loading
+    $('.vdccontainer').attr('id', vdccontrol.parentelement.selector);
     $scope.$on('$routeChangeStart', function() {
       $scope.isDocs = $location.path().search('/Docs') !== -1 ? 'True' : 'False';
     });
@@ -106,7 +108,8 @@
     }
     function loadSpaces() {
       return CloudSpace.list().then(function(cloudspaces) {
-        $scope.cloudspaces = cloudspaces;
+        var singleCloudspace = _.where(cloudspaces, {id: vdccontrol.vdc_id});
+        $scope.cloudspaces = singleCloudspace;
         if (cloudspaces.length === 0) {
           $timeout(function() {
             $scope.noAccount = true;

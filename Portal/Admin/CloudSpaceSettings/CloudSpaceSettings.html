@@ -7,11 +7,11 @@
 	<br>
 	<tabset class="clear-both">
 
-		<tab id="access" heading="Access Management">
+		<!-- <tab id="access" heading="Access Management">
 			<div id="access" class="tab-pane">
       <div ng-include src="'/Portal/Admin/CloudSpaceSettings/CloudSpaceAccessManagement/CloudSpaceAccessManagement.html'"></div>
 			</div>
-		</tab>
+		</tab> -->
 		<tab id="details" heading="Details">
 			<div id="details" class="tab-pane active" >
 				<div class="clearfix margin-bottom-medium">
@@ -24,8 +24,8 @@
       				<span class="txt-gray txt-13 bg-info padding-horizontal-medium padding-vertical-small">{[currentLocation.name]}</span>
       			</div>
     		</div>
-				<hr class="margin-top-large margin-bottom-large">
-				<button class="btn margin-top-large clear-both left" ng-click="deleteCloudspace()" ng-show="currentUser.acl.cloudspace == 3"><i class="fa fa-trash"></i> Delete Cloud Space</button>
+				<!-- <hr class="margin-top-large margin-bottom-large"> -->
+				<!-- <button class="btn margin-top-large clear-both left" ng-click="deleteCloudspace()" ng-show="currentUser.acl.cloudspace == 3"><i class="fa fa-trash"></i> Delete Cloud Space</button> -->
 				<script type="text/ng-template" id="deleteCloudSpaceDialog.html">
 					<form name="destroyform" ng-submit="cancelDeletion()">
 						<div class="modal-header">
