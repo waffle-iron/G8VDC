@@ -1138,7 +1138,7 @@ canvas {
 @media -sass-debug-info{filename{font-family:file\:\/\/less\/custom\.less}line{font-family:\00003198}}
 .sideNav {
   position: absolute;
-  top: 80px;
+  top: 0;
   right: 0;
   width: 180px;
   height: auto;

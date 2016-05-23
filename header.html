@@ -1,5 +1,5 @@
 <div class="navbar navbar-inverse navbar-inner navbar-form" ng-controller="CloudSpaceNavigatorController" role="navigation">
-  <!-- <div class="subnavbar-inner">
+  <div class="subnavbar-inner">
     <div class="container relative">
       <a class="logo" href="#/Decks"><img src=".files/img/logo-colored.png" title="Home" class="margin-vertical-small" width='132' height='56'></a>
       <ul class="stick-top-right">
@@ -16,7 +16,7 @@
         </li>
       </ul>
     </div>
-  </div> -->
+  </div>
   <nav class="navbar navbar-default " role="navigation">
     <div class="container">
       <div class="navbar-header navbar-right">
@@ -34,9 +34,9 @@
             <span class="cloudspace-nav margin-left-none padding-left-none block margin-right-medium"
               tourtip="Manage here your Cloud spaces. The Cloud Space is your private virtual datacenter including your compute, storage and networking capacity" tourtip-placement="bottom" tourtip-step="0">
               <span ng-cloak>{[currentSpace.accountName]} / {[currentSpace.name]}</span>
-              <!-- <b class="caret"></b> -->
+              <b class="caret"></b>
             </span>
-            <!-- <div class="dropdown-menu open-cloudspace-nav" role="menu" aria-labelledby="dLabel">
+            <div class="dropdown-menu open-cloudspace-nav" role="menu" aria-labelledby="dLabel">
               <div class="accordionInside padding-bottom-none">
                 <div class="panel-group gray" id="accordion" close-others="false">
                   <div ng-repeat="account in AccountCloudSpaceHierarchy" class="panel panel-default">
@@ -99,7 +99,7 @@
                   </div>
                 </form>
               </script>
-            </div> -->
+            </div>
           </li>
           <li ng-show="currentUser.acl.cloudspace > 0 && !noAccount"><a href="/#/CloudSpaceSettings" class="padding-left-none content-gear"><i class="fa fa-cog margin-right-small" title="Cloud Space settings"></i></a></li>
         </ul>
