@@ -3,8 +3,32 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <style media="screen">
+    iframe{
+      overflow:hidden;
+      border: 0;
+    }
+
+      iframe::-webkit-scrollbar {
+         display: none;
+      }
+      iframe {
+        width: 100%;
+      }
+
+    </style>
   </head>
   <body>
-    <iframe src="http://127.0.0.1:8888?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaXNzIjoibWFpbiJ9.0hHxqGqkzWFgUaHfmGbCSCDpJwKUOsw69QAfDd1qjhc&vdc_id=21" width="1000" height="800"></iframe>
+    <iframe src="http://127.0.0.1:8888?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaXNzIjoibWFpbiJ9.0hHxqGqkzWFgUaHfmGbCSCDpJwKUOsw69QAfDd1qjhc&vdc_id=21" height="700"></iframe>
+    <script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      var height = $(window).height();
+      $('iframe').height(height);
+
+
+      });
+
+    </script>
   </body>
 </html>
