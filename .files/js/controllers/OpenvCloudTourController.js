@@ -7,10 +7,11 @@
   function OpenvCloudTourController($scope, ipCookie, Users, SessionData, User, $ErrorResponseAlert) {
     $scope.steps = {};
     $scope.tourtips = true;
-    $scope.steps['tourStep'] = ipCookie('tourStep') || 0;
-    $scope.steps['portForwardTourStep'] = ipCookie('portForwardTourStep') || 0;
-    $scope.steps['machineDetailTourStep'] = ipCookie('machineDetailTourStep') || 0;
-    $scope.steps['machineListTourStep'] = ipCookie('machineListTourStep') || 0;
+    // Now 999 means that tours is disabled, make them all zeros should enable again
+    $scope.steps['tourStep'] = ipCookie('tourStep') || 9999;
+    $scope.steps['portForwardTourStep'] = ipCookie('portForwardTourStep') || 9999;
+    $scope.steps['machineDetailTourStep'] = ipCookie('machineDetailTourStep') || 9999;
+    $scope.steps['machineListTourStep'] = ipCookie('machineListTourStep') || 9999;
     // Saving tour progress in cookies
     $scope.postStepCallback = postStepCallback;
     $scope.tourComplete = tourComplete;
