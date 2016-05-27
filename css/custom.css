@@ -587,7 +587,6 @@ h2,
 .white {
   background: #FFF;
   padding: 30px 0 79px 0;
-  min-height: 537px;
 }
 /* line 118, less/custom.less */
 @media -sass-debug-info{filename{font-family:file\:\/\/less\/custom\.less}line{font-family:\00003118}}
@@ -653,14 +652,6 @@ hr {
 @media -sass-debug-info{filename{font-family:file\:\/\/less\/custom\.less}line{font-family:\00003128}}
 p {
   color: #77777b;
-}
-/* line 129, less/custom.less */
-@media -sass-debug-info{filename{font-family:file\:\/\/less\/custom\.less}line{font-family:\00003129}}
-body {
-  background: url(../img/space&mountain.jpg) no-repeat center 0 #000;
-  color: #666;
-  background-size: 100%;
-  background-position: center 0;
 }
 /* line 130, less/custom.less */
 @media -sass-debug-info{filename{font-family:file\:\/\/less\/custom\.less}line{font-family:\00003130}}
@@ -875,16 +866,10 @@ h2 {
   outline: 0;
 }
 /* line 156, less/custom.less */
-@media -sass-debug-info{filename{font-family:file\:\/\/less\/custom\.less}line{font-family:\00003156}}
-html,
-body {
-  height: 100%;
-}
 /* line 157, less/custom.less */
 @media -sass-debug-info{filename{font-family:file\:\/\/less\/custom\.less}line{font-family:\00003157}}
 body:before {
   content: "";
-  height: 100%;
   float: left;
   width: 0;
   margin-top: -32767px;

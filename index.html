@@ -114,6 +114,17 @@
                     <script src='.files/swagger/lib/marked.js' type='text/javascript'></script>
 
                     <script src=".files/js/swaggerdirective.js" type="text/javascript"></script>
+                    <script src="element-resize-detector.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                      (function () {
+                        var erd = elementResizeDetectorMaker();
+                        erd.listenTo(document.getElementById("wrap"), function(element) {
+                          var parentiFrame = $(window.frameElement);
+                          var docHeight = $("body").height();
+                          parentiFrame.height(docHeight);
+                        });
+                      })();
+                    </script>
                     <div ng-show="isDocs" ng-include src="'Portal/Docs/left-side-nav.html'"></div>
                     <div class="" ng-view></div>
                   </div>
