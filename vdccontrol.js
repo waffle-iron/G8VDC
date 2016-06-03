@@ -28,7 +28,7 @@ function vdccontrol_init(json_web_token, apiurl, vdc_id, g8_domain) {
 var json_web_token  = getParamValue('jwt');
 var apiurl = '/restmachine/cloudapi';
 var vdc_id = parseInt(getParamValue('vdc_id'));
-var g8_url = parseInt(getParamValue('g8_domain'));
+var g8_domain = parseInt(getParamValue('g8_domain'));
 vdccontrol_init(json_web_token, apiurl, vdc_id, g8_domain);
 
 // Check /ovccontrol-test.html for Iframe demo!
