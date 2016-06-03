@@ -13,11 +13,12 @@ function getParamValue(paramName){
 }
 
 var vdccontrol = {};
-function vdccontrol_init(json_web_token, apiurl, vdc_id) {
+function vdccontrol_init(json_web_token, apiurl, vdc_id, g8_domain) {
   vdccontrol = {
     json_web_token: json_web_token,
     apiurl: apiurl,
-    vdc_id: vdc_id
+    vdc_id: vdc_id,
+    g8_domain: g8_domain
   };
   localStorage.setItem('vdccontrol', JSON.stringify(vdccontrol) );
 
@@ -27,7 +28,8 @@ function vdccontrol_init(json_web_token, apiurl, vdc_id) {
 var json_web_token  = getParamValue('jwt');
 var apiurl = '/restmachine/cloudapi';
 var vdc_id = parseInt(getParamValue('vdc_id'));
-vdccontrol_init(json_web_token, apiurl, vdc_id);
+var g8_url = parseInt(getParamValue('g8_domain'));
+vdccontrol_init(json_web_token, apiurl, vdc_id, g8_domain);
 
 // Check /ovccontrol-test.html for Iframe demo!
 // P.S. nobody like iframes...
