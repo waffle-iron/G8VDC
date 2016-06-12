@@ -5,6 +5,8 @@
     .module('cloudscalers.controllers')
     .controller('OpenvCloudTourController', OpenvCloudTourController);
   function OpenvCloudTourController($scope, ipCookie, Users, SessionData, User, $ErrorResponseAlert) {
+    var vdccontrol = JSON.parse(localStorage.getItem('vdccontrol'));
+    $scope.headerEnable = vdccontrol.headerEnable;
     $scope.steps = {};
     $scope.tourtips = true;
     // Now 999 means that tours is disabled, make them all zeros should enable again
