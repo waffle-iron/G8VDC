@@ -70,7 +70,7 @@
       setInitialAccount();
     }
     function setCurrentCloudspace(space) {
-      if (space === null) {
+      if (space === null || space === undefined) {
         return;
       }
       CloudSpace.setCurrent(space);
@@ -106,8 +106,10 @@
     }
     function loadSpaces() {
       return CloudSpace.list().then(function(cloudspaces) {
-        var singleCloudspace = _.where(cloudspaces, {id: vdccontrol.vdc_id});
-        $scope.cloudspaces = singleCloudspace;
+        if (vdccontrol.vdc_id != null) {
+            cloudspaces = _.where(cloudspaces, {id: vdccontrol.vdc_id});
+        }
+        $scope.cloudspaces = cloudspaces;
         if (cloudspaces.length === 0) {
           $timeout(function() {
             $scope.noAccount = true;
