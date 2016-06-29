@@ -17,7 +17,7 @@
       </ul>
     </div>
   </div>
-  <nav class="navbar navbar-default " role="navigation">
+  <nav class="navbar navbar-default" role="navigation">
     <div class="container">
       <div class="navbar-header navbar-right">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-list">
@@ -31,18 +31,18 @@
         <ul class="nav navbar-nav margin-all-none">
           <li><a href="#/decks">Home</a></li>
           <li class="dropdown dropdown-accordion" ng-show="!noAccount">
-            <span class="cloudspace-nav margin-left-none padding-left-none block margin-right-medium"
+            <a id="drop1" role="button" class="margin-left-none padding-left-none" data-toggle="dropdown"
               tourtip="Manage here your Cloud spaces. The Cloud Space is your private virtual datacenter including your compute, storage and networking capacity" tourtip-placement="bottom" tourtip-step="0">
-              <span ng-cloak>{[currentSpace.accountName]} / {[currentSpace.name]}</span>
-              <b class="caret"></b>
-            </span>
+                <span ng-cloak>{[currentSpace.accountName]} / {[currentSpace.name]}</span>
+                <b class="caret"></b>
+            </a>
             <div class="dropdown-menu open-cloudspace-nav" role="menu" aria-labelledby="dLabel">
               <div class="accordionInside padding-bottom-none">
                 <div class="panel-group gray" id="accordion" close-others="false">
                   <div ng-repeat="account in AccountCloudSpaceHierarchy" class="panel panel-default">
                     <div class="panel-heading">
                       <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#{[account.name | nospace]}">{[account.name]}
+                        <a data-toggle="collapse" onclick="event.preventDefault()" ng-click="fixDropdown($event)" data-parent="#accordion" href="#{[account.name | nospace]}">{[account.name]}
                           <i ng-click="goToAccountSettings($event, account.id)" ng-show="account.cuurentAccountInAccountList != 'NoAccessOnAccount'" class="fa fa-users right txt-dark-blue sm-color" title="Account settings"></i>
                         </a>
                       </h4>

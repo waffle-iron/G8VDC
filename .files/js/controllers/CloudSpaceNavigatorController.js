@@ -13,7 +13,6 @@
     $scope.AccountCloudSpaceHierarchy = undefined;
     $scope.createNewCloudSpace = createNewCloudSpace;
     $scope.goToAccountSettings = goToAccountSettings;
-
     // Binding and Watch
     $scope.$watch('cloudspaces + accounts', cloudspacesAndAccounts);
 
@@ -29,6 +28,17 @@
         $scope.accounts = accounts;
       });
     }
+
+    $scope.fixDropdown = function($event) {
+      $event.preventDefault();
+      $event.stopPropagation();
+      var anchor = $($event.currentTarget);
+      $(anchor.attr('href')).toggleClass('collapse');
+      $(anchor.attr('href')).toggleClass('open');
+      anchor.parents('.panel-group').find('.panel-heading.open').not(anchor.parents('.panel-heading')).removeClass('open');
+      anchor.parents('.panel-heading').toggleClass('open');
+    }
+
     function buildAccountCloudSpaceHierarchy() {
       var cloudspacesGroups = _.groupBy($scope.cloudspaces, 'accountId');
       var accountCloudSpaceHierarchy = [];
