@@ -1,14 +1,14 @@
-## How to Integrate the VDC Control Panel into a Thirth Party Website
+## How to integrate the VDC Control Panel into your website
 
-The VDC Control Panel requires user authentication via Itsyou.online.
+The **VDC Control Panel** requires user authentication via Itsyou.online.
 
-So before you continuing make sure you have Itsyou.online integration working, as documented in the [GitBook for Itsyou.online](https://www.gitbook.com/book/gig/itsyouonline).
+So before you continue make sure you have **Itsyou.online** integration working as documented in the [GitBook for Itsyou.online](https://www.gitbook.com/book/gig/itsyouonline).
 
 With the **autorization code** acquired through the OAuth 2.0 authorization flow you'll be able to get an JSON web token (JWT) needed by the HTML iframe discussed below in order to interact with the virtual datacenter on behalf of the end user.
 
 To learn more about the JSON web token (JWT) support in Itsyou.online, see the [JWT section in the Itsyou.online GitBook](https://gig.gitbooks.io/itsyouonline/content/oauth2/jwt.html).
 
-The actual integration of the VDC Control panel takes three steps:
+The actual integration takes three steps:
 
 - **Step 1**: Get the source code onto your web server
 - **Step 2**: Embed the VDC Control Panel as a HTML iframe
@@ -59,4 +59,4 @@ Add following lines in between the <virtualhost> tag of the `/etc/apache2/sites-
         ProxyPass /restmachine/ https://${G8_DOMAIN}/restmachine/ interpolate
         ProxyPassReverse /restmachine/ https://${G8_DOMAIN}/restmachine/ interpolate
 </VirtualHost>
-````
+```
