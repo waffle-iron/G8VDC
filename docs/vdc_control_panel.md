@@ -48,6 +48,8 @@ The query string part of the **src** attribute has three fields:
 
 In order to cope with the [same-origin policy](https://en.wikipedia.org/wiki/Same-origin_policy) you will need to set-up a reverse proxy for the **VDC Control Panel** to connect to the G8 node.
 
+Below an example of how to configure the reverse proxy server for Apache 2.
+
 Add following lines in between the <virtualhost> tag of the `/etc/apache2/sites-enable/000-default.conf` configuration file:
 
 ```html
