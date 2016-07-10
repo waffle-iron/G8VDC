@@ -5,7 +5,7 @@ var cloudscalers = angular.module('cloudscalers', [
   'cloudscalers.services',
   'cloudscalers.controllers',
   'ngRoute',
-  // 'angular-szn-autocomplete',
+  'angular-szn-autocomplete',
   'ui.bootstrap'
 ]);
 
