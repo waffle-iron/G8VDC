@@ -90,7 +90,7 @@ angular.module('cloudscalers.services')
 
   user.getPortalLoggedinUser = function() {
     var url = '/restmachine//system/usermanager/whoami';
-    return $http.get(url).then(
+    return $http.post(url).then(
       function(result) {
         return JSON.parse(result.data);
       },
@@ -105,13 +105,14 @@ angular.module('cloudscalers.services')
   };
 
   user.get = function(username) {
-    var url = cloudspaceconfig.apibaseurl + '/users/get?username=' + encodeURIComponent(username);
+    var data = {username: username};
+    var url = cloudspaceconfig.apibaseurl + '/users/get';
     var currentUser = SessionData.getUser();
     if (currentUser) {
       var uri = new URI(url);
       url = uri.toString();
     }
-    return $http.get(url);
+    return $http.post(url, data);
   };
 
   user.updateUserDetails = function(username) {
