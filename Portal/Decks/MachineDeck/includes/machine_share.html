@@ -10,7 +10,7 @@
 	        <tr class="header" ng-show="currentUser.acl.machine > 2 || currentUser.acl.cloudspace > 1">
 	            <th class="username-text-container width-60">
                     <div id="szn-autocomplete-wrap">
-                        <div class="bg form-control"></div>
+                        <!-- <div class="bg form-control"></div> -->
                         <input id="searchQuery" ng-model="searchQuery" szn-autocomplete="autocompleteOptions" placeholder="Search usernames or invite by email..." />
                         <i class="fa fa-times btn-reset-email" ng-show="searchQuery.length" ng-click="resetSearchQuery()">
                         </i>
