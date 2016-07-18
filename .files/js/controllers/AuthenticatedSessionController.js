@@ -16,10 +16,6 @@
     $scope.getUserAccessOnAccount = getUserAccessOnAccount;
     $scope.logout = logout;
     $scope.noAccount = false;
-    $scope.$on('$routeChangeStart', function() {
-      $scope.isDocs = $location.path().search('/Docs') !== -1 ? 'True' : 'False';
-    });
-
     var portalSessionCookie = ipCookie('beaker.session.id');
 
     // Binding and Watch
@@ -70,7 +66,7 @@
       setInitialAccount();
     }
     function setCurrentCloudspace(space) {
-      if (space === null || space === undefined) {
+      if (space === null) {
         return;
       }
       CloudSpace.setCurrent(space);
@@ -86,8 +82,6 @@
       }
     }
     function setCurrentAccount(currentAccountId) {
-      // $scope.currentAccount = {}; is that needed?
-      $scope.currentAccount = {};
       $scope.currentAccount.userRightsOnAccount = {};
       if ($scope.currentAccount.id) {
         Account.get(currentAccountId).then(function(account) {
@@ -106,9 +100,6 @@
     }
     function loadSpaces() {
       return CloudSpace.list().then(function(cloudspaces) {
-        if (vdccontrol.vdc_id != null) {
-            cloudspaces = _.where(cloudspaces, {id: vdccontrol.vdc_id});
-        }
         $scope.cloudspaces = cloudspaces;
         if (cloudspaces.length === 0) {
           $timeout(function() {
@@ -143,7 +134,7 @@
         var userInCurrentAccount = _.find($scope.currentAccount.userRightsOnAccount , function(acl) {
           return acl.userGroupId === $scope.currentUser.username;
         });
-        // $scope.currentUser.acl.account = 0;
+        $scope.currentUser.acl.account = 0;
         if (userInCurrentAccount) {
           var currentUserAccessrightOnAccount = userInCurrentAccount.right.toUpperCase();
           if (currentUserAccessrightOnAccount === 'R') {
