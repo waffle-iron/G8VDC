@@ -16,6 +16,10 @@
     $scope.getUserAccessOnAccount = getUserAccessOnAccount;
     $scope.logout = logout;
     $scope.noAccount = false;
+    $scope.$on('$routeChangeStart', function() {
+      $scope.isDocs = $location.path().search('/Docs') !== -1 ? 'True' : 'False';
+    });
+
     var portalSessionCookie = ipCookie('beaker.session.id');
 
     // Binding and Watch
