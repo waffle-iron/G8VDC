@@ -1,12 +1,7 @@
 'use strict';
 
 angular.module('cloudscalers.services')
-.factory('CloudSpace', function($http, $q, SessionData) {
-  var vdccontrol = JSON.parse(localStorage.getItem('vdccontrol'));
-  if (vdccontrol.json_web_token) {
-    $http.defaults.headers.common['Authorization'] = 'Bearer ' + vdccontrol.json_web_token;
-  }
-  $http.defaults.headers.common['X-G8-DOMAIN'] = vdccontrol.g8_domain;
+.factory('CloudSpace', function($http, $q, $window, SessionData) {
   return {
     list: function() {
       return $http.post(cloudspaceconfig.apibaseurl + '/cloudspaces/list')
@@ -39,9 +34,10 @@ angular.module('cloudscalers.services')
       );
     },
     get: function(cloudspaceId) {
-       var data = {cloudspaceId: cloudspaceId};
-       return $http.post(cloudspaceconfig.apibaseurl + '/cloudspaces/get', data)
-       .then(function(result) {
+      var data = {cloudspaceId: cloudspaceId};
+      return $http.post(cloudspaceconfig.apibaseurl + '/cloudspaces/get', data)
+      .then(
+        function(result) {
           return result.data;
         },
         function(reason) {
@@ -52,13 +48,17 @@ angular.module('cloudscalers.services')
     getDefenseShield: function(cloudspaceId) {
       var data = {cloudspaceId: cloudspaceId};
       return $http.post(cloudspaceconfig.apibaseurl + '/cloudspaces/getDefenseShield', data)
-      .then(function(result) {
+      .then(
+        function(result) {
           return result.data;
         },
         function(reason) {
           return $q.reject(reason);
         }
       );
+    },
+    getOpenvpnConfig: function(cloudspaceId) {
+      return $window.open(cloudspaceconfig.apibaseurl + '/cloudspaces/getOpenvpnConfig?cloudspaceId=' + cloudspaceId);
     },
     addUser: function(space, user, accessType) {
       var data = {cloudspaceId: cloudspaceId, accesstype: accessType, userId: user};
@@ -69,21 +69,21 @@ angular.module('cloudscalers.services')
       });
     },
     inviteUser: function(space, user, accessType) {
-      var data = {machineId: machineId, accesstype: accessType, emailaddress: user};
-      return $http.post(cloudspaceconfig.apibaseurl + '/machines/addExternalUser', data)
-       .then(
-         function(result) { return result.data;},
-         function(reason) { return $q.reject(reason);}
-       );
-     },
+      var data = {cloudspaceId: space.id, accesstype: accessType, emailaddress: user};
+      return $http.post(cloudspaceconfig.apibaseurl + '/cloudspaces/addExternalUser', data)
+      .then(
+        function(result) { return result.data;},
+        function(reason) { return $q.reject(reason);
+      });
+    },
     deleteUser: function(space, userId) {
       var data = {cloudspaceId: space.id, userId: userId};
       return $http.post(cloudspaceconfig.apibaseurl + '/cloudspaces/deleteUser', data)
       .then(
-         function(result) { return result.data; },
-         function(reason) { return $q.reject(reason);
-       });
-     },
+        function(result) { return result.data; },
+        function(reason) { return $q.reject(reason);
+      });
+    },
     delete: function(cloudspaceId) {
       var data = {cloudspaceId: cloudspaceId};
       return $http.post(cloudspaceconfig.apibaseurl + '/cloudspaces/delete', data)
