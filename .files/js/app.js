@@ -159,6 +159,8 @@ cloudscalers.factory('$ErrorResponseAlert',function($alert) {
   return function(reason) {
     if (reason.status === 500 || reason.status === 502 || reason.status === 504 || reason.data === null) {
       $alert('An unexpected error has occurred');
+    } else if (reason.status === 401) {
+      $alert('Please login to access full functionality');
     } else {
       var message = '';
       try {
