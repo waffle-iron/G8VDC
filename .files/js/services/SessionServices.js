@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('cloudscalers.services')
-.factory('authenticationInterceptor', function($q, SessionData) {
+.factory('authenticationInterceptor', function($q, SessionData, $window) {
   return {
     'request': function(config) {
       if (config) {
@@ -21,6 +21,10 @@ angular.module('cloudscalers.services')
     },
 
     'responseError': function(rejection) {
+      if (rejection.status === 401 || rejection.status === 419) {
+        $window.location = '/restmachine/system/oauth/authenticate?type=oauth&redirect=' +
+        encodeURIComponent(window.location);
+      }
       return $q.reject(rejection);
     }
   };
