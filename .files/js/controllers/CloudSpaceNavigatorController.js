@@ -135,6 +135,7 @@
         _.findWhere($scope.AccountCloudSpaceHierarchy, {id: currentAccountId}).cloudspaces[0]
       );
       e.stopPropagation();
+      $('.dropdown-accordion').removeClass('open');
       $timeout(function(){
         $window.location.assign('#/AccountSettings');
       },1);
