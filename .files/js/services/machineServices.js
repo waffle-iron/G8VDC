@@ -235,19 +235,20 @@ angular.module('cloudscalers.services')
       );
     },
     getConsoleUrl: function(machineId) {
+      var getConsoleUrlResult = {};
       var data = {machineId: machineId};
       var url = cloudspaceconfig.apibaseurl + '/machines/getConsoleUrl';
       $http.post(url, data).success(function(data, status) {
         if (data === 'None') {
           getConsoleUrlResult.error = status;
         } else {
-          getConsoleUrlResult.url = JSON.parse(data);
-        }
-      }).error(function(data, status) {
-        getConsoleUrlResult.error = status;
-      });
-      return getConsoleUrlResult;
-    },
+           getConsoleUrlResult.url = JSON.parse(data);
+         }
+       }).error(function(data, status) {
+         getConsoleUrlResult.error = status;
+       });
+        return getConsoleUrlResult;
+      },
     getHistory: function(machineId) {
       var data = {machineId: machineId, size: 100};
       var url = cloudspaceconfig.apibaseurl + '/machines/getHistory';
