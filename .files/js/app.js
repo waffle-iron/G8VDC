@@ -11,12 +11,91 @@ var cloudscalers = angular.module('cloudscalers', [
 
 cloudscalers
   .config(['$routeProvider', function($routeProvider) {
-    $routeProvider.when('/list', {templateUrl: 'pages/list'});
-    $routeProvider.when('/new', {templateUrl: 'pages/new', controller: 'MachineCreationController'});
-    $routeProvider.when('/edit/:machineId/:activeTab?', {
-      templateUrl: 'pages/details',
-      controller: 'MachineEditController'
+    $routeProvider.when('/decks', {
+        templateUrl: 'Portal/Decks/Decks.html'
     });
+    $routeProvider.when('/list', {
+        templateUrl: 'shared/list.html',
+        controller: 'MachineController'
+    });
+    $routeProvider.when('/new', {
+      templateUrl: 'Portal/Decks/MachineDeck/pages/new.html'
+    });
+    $routeProvider.when('/edit/:machineId/:activeTab?', {
+        templateUrl: 'shared/details.html',
+        controller: 'MachineEditController'
+    });
+    $routeProvider.when('/CloudSpaceSettings', {
+        templateUrl: 'Portal/Admin/CloudSpaceSettings/CloudSpaceSettings.html',
+        controller: 'CloudSpaceManagementController'
+    });
+    $routeProvider.when('/AccountSettings', {
+        templateUrl: 'Portal/Admin/AccountSettings/AccountSettings.html',
+        controller: 'AccountSettingsController'
+    });
+    $routeProvider.when('/GettingStarted', {
+        templateUrl: 'Portal/Support/getting-started/getting-started.html'
+    });
+    $routeProvider.when('/ApiDocs', {
+        templateUrl: 'Portal/Support/ApiDocs/ApiDocs.html'
+    });
+    $routeProvider.when('/Support', {
+        templateUrl: 'Portal/Support/Support.html'
+    });
+    $routeProvider.when('/MachineDeck', {
+        templateUrl: 'shared/list.html',
+        controller: 'MachineController'
+    });
+    $routeProvider.when('/Portforwarding', {
+        templateUrl: 'Portal/Decks/NetworkDeck/Portforwarding.html',
+        controller: 'PortforwardingController'
+    });
+    $routeProvider.when('/NetworkDeck', {
+        templateUrl: 'Portal/Decks/NetworkDeck/NetworkDeck.html',
+        controller: 'NetworkController'
+    });
+    $routeProvider.when('/Consumption', {
+        templateUrl: 'Portal/Admin/Consumption/Consumption.html',
+        controller: 'AccountController'
+    });
+    $routeProvider.when('/Billing', {
+        templateUrl: 'Portal/Admin/AccountSettings/Billing.html',
+        controller: 'BillingController'
+    });
+    $routeProvider.when('/Profile', {
+        templateUrl: 'Portal/Admin/Profile/Profile.html',
+        controller: 'UsersController'
+    });
+    $routeProvider.when('/ResetPassword', {
+        templateUrl: 'Public/Authentication/Login/ResetPassword.html',
+        controller: 'ResetPasswordController'
+    });
+    // Docs
+    $routeProvider.when('/Docs', {
+        templateUrl: 'Portal/Docs/Docs.html'
+    });
+    $routeProvider.when('/Docs/access-your-cloud-space-using-openvpn', {
+        templateUrl: 'Portal/Docs/TechnicalTutorials/access-your-cloud-space-using-openvpn.html'
+    });
+    $routeProvider.when('/Docs/enable-root-access-on-ubuntu-over-ssh', {
+        templateUrl: 'Portal/Docs/TechnicalTutorials/enable-root-access-on-ubuntu-over-ssh.html'
+    });
+    $routeProvider.when('/Docs/getting-started-with-jumpscale', {
+        templateUrl: 'Portal/Docs/TechnicalTutorials/getting-started-with-jumpscale.html'
+    });
+    $routeProvider.when('/Docs/how-to-configure-ubuntu-to-connect-to-openvpn', {
+        templateUrl: 'Portal/Docs/TechnicalTutorials/how-to-configure-ubuntu-to-connect-to-openvpn/tutorial.html'
+    });
+    $routeProvider.when('/Docs/my-first-machine-linux', {
+        templateUrl: 'Portal/Docs/TechnicalTutorials/my-first-machine-linux/tutorial.html'
+    });
+    $routeProvider.when('/Docs/my-first-machine-windows', {
+        templateUrl: 'Portal/Docs/TechnicalTutorials/my-first-machine-windows/tutorial.html'
+    });
+    $routeProvider.when('/Docs/pptp-connection-to-space-from-windows10', {
+        templateUrl: 'Portal/Docs/TechnicalTutorials/pptp-connection-to-space-from-windows10/tutorial.html'
+    });
+
     $routeProvider.otherwise({redirectTo: '/list'});
   }])
   .config(['$interpolateProvider','$compileProvider', function($interpolateProvider, $compileProvider) {
