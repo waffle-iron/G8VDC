@@ -70,7 +70,7 @@
       setInitialAccount();
     }
     function setCurrentCloudspace(space) {
-      if (space === null) {
+      if (space === null || space === undefined) {
         return;
       }
       CloudSpace.setCurrent(space);
@@ -87,7 +87,7 @@
     }
     function setCurrentAccount(currentAccountId) {
       $scope.currentAccount.userRightsOnAccount = {};
-      if ($scope.currentAccount.id) {
+      if (currentAccountId) {
         Account.get(currentAccountId).then(function(account) {
           $scope.currentAccount = account;
           $scope.currentAccount.userRightsOnAccount = account.acl;
@@ -105,12 +105,6 @@
     function loadSpaces() {
       return CloudSpace.list().then(function(cloudspaces) {
         $scope.cloudspaces = cloudspaces;
-        if (cloudspaces.length === 0) {
-          $timeout(function() {
-            $scope.noAccount = true;
-            SessionData.setSpace();
-          });
-        }
         return cloudspaces;
       }, function(reason) {
         $ErrorResponseAlert(reason);

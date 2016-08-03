@@ -10,6 +10,7 @@
     LoadingDialog, $timeout, $ErrorResponseAlert, $window) {
     $scope.isCollapsed = true;
     $scope.locations = {};
+    $scope.noAccount = false;
     $scope.AccountCloudSpaceHierarchy = undefined;
     $scope.createNewCloudSpace = createNewCloudSpace;
     $scope.goToAccountSettings = goToAccountSettings;
@@ -66,6 +67,27 @@
         account.cloudspaces = cloudspacesGroups[accountId];
         accountCloudSpaceHierarchy.push(account);
       }
+      for (var idx in $scope.accounts) {
+          var account = $scope.accounts[idx];
+          var accountfound = false;
+          for (var accountidx in accountCloudSpaceHierarchy) {
+              var hierarchyaccount = accountCloudSpaceHierarchy[accountidx];
+              if (hierarchyaccount.id == account.id) {
+                  accountfound = true;
+                  break;
+              }
+          }
+          if (!accountfound) {
+              var hierarchyaccount = {
+                id: account.id,
+                name: account.name,
+                cloudspaces: [],
+                acl: account.acl,
+              };
+              accountCloudSpaceHierarchy.push(hierarchyaccount);
+          }
+      }
+      $scope.noAccount = accountCloudSpaceHierarchy.length == 0;
       $scope.AccountCloudSpaceHierarchy = accountCloudSpaceHierarchy;
     }
     function cloudspacesAndAccounts() {
@@ -134,6 +156,7 @@
       $scope.setCurrentCloudspace(
         _.findWhere($scope.AccountCloudSpaceHierarchy, {id: currentAccountId}).cloudspaces[0]
       );
+      $scope.setCurrentAccount(currentAccountId);
       // e.stopPropagation();
       if($('.dropdown-accordion').hasClass('open')) {
         $('.dropdown-accordion').removeClass('open');
