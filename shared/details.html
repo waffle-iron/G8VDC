@@ -109,12 +109,13 @@ Your Defense shield assigns a fix IP address during the initial OS boot.">
                                     Reboot
                                 </a>
                             </li>
-                            <li ng-show="machine.status == 'RUNNING' && machine.locked == false">
+
                                 <a ng-click="reset()">
                                     <i class="fa fa-repeat "></i>
                                     Reset
                                 </a>
                             </li>
+
                             <li ng-show="currentUser.acl.machine > 1 && machine.locked == false">
                                 <a class="forTipSnap" ng-click="createSnapshot()" ng-class="{'action-disabled': machine.locked != false}" tourtip="Taking a snapshot ensures you have a point in time to return to. Taking a snapshot takes seconds.">
                                     <i class="fa fa-camera"></i>
@@ -203,6 +204,30 @@ Your Defense shield assigns a fix IP address during the initial OS boot.">
                     </div>
                   </script>
               </li>
+              <li ng-show="machine.status == 'HALTED' && machine.locked == false">
+                <a class="forTip" ng-click="cloneMachine()">
+                    <i class="fa fa-clone" aria-hidden="true"></i>
+                    Clone
+                </a>
+                <script type="text/ng-template" id="cloneMachineDialog.html">
+                  <div class="modal-header">
+                      <h3>Clone machine ?</h3>
+                  </div>
+                  <div class="modal-body">
+                      <ul>
+                          Name: <input ng-model="clone.name" type="text" class="input-large" />
+                      </ul>
+                      <div class="alert alert-warning margin-top-large">
+                      Cloning a machine might take some time during this process your Virtual Machine will be locked.
+                      Limited actions will be available.
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button class="btn btn-primary ok" ng-click="ok()">Clone Machine</button>
+                      <button class="btn cancel" ng-click="cancel()">Cancel</button>
+                  </div>
+                </script>
+              </li>
               <li ng-show="currentUser.acl.cloudspace > 1 && machine.locked == false">
                       <a ng-click="destroy()">
                           <i class=" fa fa-times-circle-o"></i>
@@ -224,28 +249,28 @@ Your Defense shield assigns a fix IP address during the initial OS boot.">
                           </form>
                       </script>
                   </li>
-                    </ul>
-                </div>
+                </ul>
+            </div>
             </div>
             <script type="text/ng-template" id="updateDescription.html">
-                                <form name="form" class="form-horizontal" ng-submit="submit()">
-                                    <div class="modal-header">
-                                        <h3>Edit Description</h3>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="control-group">
-                                            <label class="control-label txt-gray" for="inputNewCloudSpaceName">Description</label>
-                                            <div class="controls">
-                                                <textarea class="description-textarea" ng-model="machine.newdescription" type="text" class="input-xlarge" placeholder="Description"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary ok">Ok</button>
-                                        <button type="button" class="btn cancel" ng-click="cancel()">Cancel</button>
-                                    </div>
-                                    </form>
-                </script>
+              <form name="form" class="form-horizontal" ng-submit="submit()">
+                <div class="modal-header">
+                    <h3>Edit Description</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="control-group">
+                        <label class="control-label txt-gray" for="inputNewCloudSpaceName">Description</label>
+                        <div class="controls">
+                            <textarea class="description-textarea" ng-model="machine.newdescription" type="text" class="input-xlarge" placeholder="Description"></textarea>
+                        </div>
+                    </div>
+                </div>
+                 <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary ok">Ok</button>
+                    <button type="button" class="btn cancel" ng-click="cancel()">Cancel</button>
+                </div>
+                </form>
+              </script>
             </div>
           </tab>
           <tab id="console" heading="Console" active="tabactive.console">
