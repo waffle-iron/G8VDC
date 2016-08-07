@@ -27,7 +27,7 @@ function vdccontrol_init(json_web_token, apiurl, vdc_id, g8_domain, headerEnable
 
 // We need to feed vdccontrol with config values throw vdccontrol_init()
 var json_web_token  = getParamValue('jwt');
-var headerEnable = true;
+var headerEnable = !json_web_token;
 var apiurl = '/restmachine/cloudapi';
 var vdc_id = parseInt(getParamValue('vdc_id'));
 var g8_domain = getParamValue('g8_domain');
