@@ -2,6 +2,11 @@
 
 angular.module('cloudscalers.services')
 .factory('CloudSpace', function($http, $q, $window, SessionData) {
+  var vdccontrol = JSON.parse(localStorage.getItem('vdccontrol'));
+  if (vdccontrol.json_web_token) {
+    $http.defaults.headers.common['Authorization'] = 'Bearer ' + vdccontrol.json_web_token;
+    $http.defaults.headers.common['X-G8-DOMAIN'] = vdccontrol.g8_domain;
+  }
   return {
     list: function() {
       return $http.post(cloudspaceconfig.apibaseurl + '/cloudspaces/list')
