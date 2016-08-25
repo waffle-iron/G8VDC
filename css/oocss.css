@@ -66,6 +66,8 @@
 }
 .margin-top-medium,.margin-vertical-medium,.margin-all-medium{
 	margin-top:10px !important;
+}
+.margin-vertical-medium{
 	width: 132px;
 	height: 56px;
 }
