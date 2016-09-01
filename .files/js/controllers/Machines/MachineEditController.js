@@ -308,15 +308,15 @@
       modalInstance.result.then(function() {
         LoadingDialog.show('Deleting machine');
         Machine.delete($scope.machine.id).then(function() {
+          LoadingDialog.hide();
           var machine = _.find($scope.machines, function(machine) {
             return machine.id === $scope.machine.id;
+            $scope.machines.splice($scope.machines.indexOf(machine) , 1);
           });
-          if (machine) {
-            machine.status = 'DESTROYED';
-          }
-          $scope.machines.splice($scope.machines.indexOf(machine) , 1);
+          // if (machines) {
+          //   machine.status = 'DESTROYED';
+          // }
           $location.path('/list');
-          LoadingDialog.hide();
         }, function(reason) {
           LoadingDialog.hide();
           $ErrorResponseAlert(reason);
