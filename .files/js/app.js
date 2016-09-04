@@ -92,31 +92,31 @@ cloudscalers
     });
     $routeProvider.when('/Docs/access-your-cloud-space-using-openvpn', {
         templateUrl: 'Portal/Docs/TechnicalTutorials/access-your-cloud-space-using-openvpn.html',
-        title: 'Docs'
+        title: 'Access your Cloud Space using OpenVPN'
     });
     $routeProvider.when('/Docs/enable-root-access-on-ubuntu-over-ssh', {
         templateUrl: 'Portal/Docs/TechnicalTutorials/enable-root-access-on-ubuntu-over-ssh.html',
-        title: 'Docs'
+        title: 'Enable Root Access on ubuntu over SSH'
     });
     $routeProvider.when('/Docs/getting-started-with-jumpscale', {
         templateUrl: 'Portal/Docs/TechnicalTutorials/getting-started-with-jumpscale.html',
-        title: 'Docs'
+        title: 'Getting Started with JumpScale'
     });
     $routeProvider.when('/Docs/how-to-configure-ubuntu-to-connect-to-openvpn', {
         templateUrl: 'Portal/Docs/TechnicalTutorials/how-to-configure-ubuntu-to-connect-to-openvpn/tutorial.html',
-        title: 'Docs'
+        title: 'How to configure Ubuntu to connect to OpenVPN'
     });
     $routeProvider.when('/Docs/my-first-machine-linux', {
         templateUrl: 'Portal/Docs/TechnicalTutorials/my-first-machine-linux/tutorial.html',
-        title: 'Docs'
+        title: 'My First Machine Linux'
     });
     $routeProvider.when('/Docs/my-first-machine-windows', {
         templateUrl: 'Portal/Docs/TechnicalTutorials/my-first-machine-windows/tutorial.html',
-        title: 'Docs'
+        title: 'My First Machine Windows'
     });
     $routeProvider.when('/Docs/pptp-connection-to-space-from-windows10', {
         templateUrl: 'Portal/Docs/TechnicalTutorials/pptp-connection-to-space-from-windows10/tutorial.html',
-        title: 'Docs'
+        title: 'Setup a PPTP connection to Space from Windows10'
     });
 
     $routeProvider.otherwise({redirectTo: '/list'});
