@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="cloudscalers">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title ng-bind="'OpenvCloud - ' + $root.title"></title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href=".files/img/favicon.jpg" />
@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="css/autocomplete.css" charset="utf-8">
   </head>
   <body>
-    <div id="wrap" class="sticky" ng-app="cloudscalers" ng-controller="AuthenticatedSessionController">
+    <div id="wrap" class="sticky" ng-controller="AuthenticatedSessionController">
       <div ng-controller="OpenvCloudTourController">
         <tour step="steps.tourStep" post-step="postStepCallback()" post-tour="tourComplete('tourStep')">
           <script type="text/ng-template" id="myModalContent.html">
