@@ -26,25 +26,26 @@ cloudscalers
     });
     $routeProvider.when('/edit/:machineId/:activeTab?', {
         templateUrl: 'shared/details.html',
-        controller: 'MachineEditController'
+        controller: 'MachineEditController',
+        title: 'MachineDeck'
     });
     $routeProvider.when('/CloudSpaceSettings', {
         templateUrl: 'Portal/Admin/CloudSpaceSettings/CloudSpaceSettings.html',
         controller: 'CloudSpaceManagementController',
-        title: 'CloudSpace Settings'
+        title: 'CloudSpaceSettings'
     });
     $routeProvider.when('/AccountSettings', {
         templateUrl: 'Portal/Admin/AccountSettings/AccountSettings.html',
         controller: 'AccountSettingsController',
-        title: 'Account Settings'
+        title: 'AccountSettings'
     });
     $routeProvider.when('/GettingStarted', {
         templateUrl: 'Portal/Support/getting-started/getting-started.html',
-        title: 'Getting Started'
+        title: 'GettingStarted'
     });
     $routeProvider.when('/ApiDocs', {
         templateUrl: 'Portal/Support/ApiDocs/ApiDocs.html',
-        title: 'Api Docs'
+        title: 'ApiDocs'
     });
     $routeProvider.when('/Support', {
         templateUrl: 'Portal/Support/Support.html',
@@ -53,7 +54,7 @@ cloudscalers
     $routeProvider.when('/MachineDeck', {
         templateUrl: 'shared/list.html',
         controller: 'MachineController',
-        title: 'Machine Deck'
+        title: 'MachineDeck'
     });
     $routeProvider.when('/Portforwarding', {
         templateUrl: 'Portal/Decks/NetworkDeck/Portforwarding.html',
@@ -63,7 +64,7 @@ cloudscalers
     $routeProvider.when('/NetworkDeck', {
         templateUrl: 'Portal/Decks/NetworkDeck/NetworkDeck.html',
         controller: 'NetworkController',
-        title: 'Network Deck'
+        title: 'NetworkDeck'
     });
     $routeProvider.when('/Consumption', {
         templateUrl: 'Portal/Admin/Consumption/Consumption.html',
@@ -83,7 +84,7 @@ cloudscalers
     $routeProvider.when('/ResetPassword', {
         templateUrl: 'Public/Authentication/Login/ResetPassword.html',
         controller: 'ResetPasswordController',
-        title: 'Reset Password'
+        title: 'ResetPassword'
     });
     // Docs
     $routeProvider.when('/Docs', {
