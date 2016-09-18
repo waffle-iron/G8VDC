@@ -120,7 +120,7 @@ cloudscalers
         title: 'Setup a PPTP connection to Space from Windows10'
     });
 
-    $routeProvider.otherwise({redirectTo: '/list'});
+    $routeProvider.otherwise({redirectTo: '/decks'});
   }])
   .config(['$interpolateProvider','$compileProvider', function($interpolateProvider, $compileProvider) {
     // Angular uses {{}} for data-binding. This operator will conflict with JumpScale macro syntax.
