@@ -21,11 +21,11 @@ angular.module('cloudscalers.controllers')
                 }
             );
 
-        $scope.sendText = function(rfb, text) {
-            for (var i=0; i<text.length; i++){
-                rfb.sendKey(text.charCodeAt(i));
-            }
-        };
+        // $scope.sendText = function(rfb, text) {
+        //     for (var i=0; i<text.length; i++){
+        //         rfb.sendKey(text.charCodeAt(i));
+        //     }
+        // };
 
         $scope.$watch('machineConsoleUrlResult',function(newvalue, oldvalue){
             if (newvalue.url){
