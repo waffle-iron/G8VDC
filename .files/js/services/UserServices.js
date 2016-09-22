@@ -51,9 +51,9 @@ angular.module('cloudscalers.services')
         }
       );
     },
-    activateUser: function(token, newpassword) {
-      var data = {validationtoken: validationtoken, password: newpassword};
-      return $http.post(cloudspaceconfig.apibaseurl + '/users/validate')
+    activateUser: function(token, password) {
+      var data = {validationtoken: token, password: password};
+      return $http.post(cloudspaceconfig.apibaseurl + '/users/validate', data)
       .then(
         function(result) {
           return result.data;
