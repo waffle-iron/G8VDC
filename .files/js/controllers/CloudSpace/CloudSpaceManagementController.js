@@ -66,7 +66,8 @@
               $window.location.reload();
             } else {
               var uri = new URI($window.location);
-              uri.filename('Decks');
+              uri.filename('');
+              uri.fragment('');
               $window.location = uri.toString();
             }
           }, function(reason) {
