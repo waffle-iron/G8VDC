@@ -3,6 +3,8 @@ angular.module('cloudscalers.controllers')
         $scope.machineConsoleUrlResult = {};
         $scope.novnc_connectioninfo = {};
 
+        $scope.loginPaste = false;
+        $scope.passwordPaste = false;
 
         $scope.$watch('tabactive.console+$parent.machine.status',function(){
             if ($scope.tabactive.console && $scope.$parent.machine.status == "RUNNING"){
