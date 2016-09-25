@@ -23,11 +23,27 @@ angular.module('cloudscalers.controllers')
                 }
             );
 
-        // $scope.sendText = function(rfb, text) {
-        //     for (var i=0; i<text.length; i++){
-        //         rfb.sendKey(text.charCodeAt(i));
-        //     }
-        // };
+        $scope.sendText = function(rfb, text) {
+            for (var i=0; i<text.length; i++){
+                rfb.sendKey(text.charCodeAt(i));
+            }
+        };
+
+        $scope.showLoginPaste = function(event){
+          if(event.ctrlKey){
+            $scope.loginPaste = true;
+          } else {
+            $scope.loginPaste = false;
+          }
+        };
+
+        $scope.showPasswordPaste = function(event){
+          if(event.ctrlKey){
+            $scope.passwordPaste = true;
+          } else {
+            $scope.passwordPaste = false;
+          }
+        };
 
         $scope.$watch('machineConsoleUrlResult',function(newvalue, oldvalue){
             if (newvalue.url){
