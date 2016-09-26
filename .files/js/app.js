@@ -86,6 +86,11 @@ cloudscalers
         controller: 'ResetPasswordController',
         title: 'ResetPassword'
     });
+    $routeProvider.when('/Activation', {
+      templateUrl: 'Activation.html',
+      controller: 'ActivateUserController',
+      title: 'Activation'
+    });
     // Docs
     $routeProvider.when('/Docs', {
         templateUrl: 'Portal/Docs/Docs.html',

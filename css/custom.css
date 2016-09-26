@@ -777,7 +777,7 @@ label + .controls {
 @media -sass-debug-info{filename{font-family:file\:\/\/less\/custom\.less}line{font-family:\00003144}}
 .account-container.stacked {
   width: 617px;
-  margin: 100px auto 0;
+  margin: 100px auto 0 300px;
   border: 7px solid rgba(255, 255, 255, 0.2);
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
