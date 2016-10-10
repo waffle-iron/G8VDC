@@ -21,10 +21,6 @@ angular.module('cloudscalers.services')
     },
 
     'responseError': function(rejection) {
-    //   if (rejection.status === 401 || rejection.status === 419) {
-    //     $window.location = '/restmachine/system/oauth/authenticate?type=oauth&redirect=' +
-    //     encodeURIComponent(window.location);
-    //   }
       return $q.reject(rejection);
     }
   };
