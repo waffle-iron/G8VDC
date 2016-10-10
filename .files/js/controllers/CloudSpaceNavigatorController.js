@@ -22,6 +22,9 @@
 
     // Functions
     function listLocationsAndAccounts() {
+      if ($scope.currentUser === undefined) {
+         return; // we are not logged in skip listing accounts
+      }
       LocationsService.list().then(function(locations) {
         $scope.locations = locations;
       });
@@ -91,6 +94,9 @@
       $scope.AccountCloudSpaceHierarchy = accountCloudSpaceHierarchy;
     }
     function cloudspacesAndAccounts() {
+      if ($scope.currentUser === undefined) {
+         return; // skip when not logged in
+      }
       buildAccountCloudSpaceHierarchy();
     }
     function CreateCloudSpaceController($scope, $modalInstance) {
