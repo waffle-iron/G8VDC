@@ -103,6 +103,9 @@
       }
     }
     function loadSpaces() {
+      if ($scope.currentUser === undefined) {
+         return []; //return empty list when not logged in
+      }
       return CloudSpace.list().then(function(cloudspaces) {
         $scope.cloudspaces = cloudspaces;
         return cloudspaces;
