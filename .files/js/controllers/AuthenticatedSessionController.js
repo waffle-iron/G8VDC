@@ -29,7 +29,6 @@
 
     // Initialization: Functions invokation logic
     checkUserAccountAccessibility();
-    $scope.loadSpaces();
 
     // Functions
     function checkUserAccountAccessibility() {
@@ -39,12 +38,14 @@
             if (username !== 'guest') {
               autoLogin(username);
             }
+            $scope.loadSpaces();
           }, function(reason) {
             $scope.loginError = reason.status;
           });
 
         }else {
           autoLogin(User.current().username);
+          $scope.loadSpaces();
         }
       }
     }
