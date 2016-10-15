@@ -47,11 +47,6 @@
       Users.tourTipsSwitch($scope.tourSwitchFlag)
       .then(
         function() {
-          var target = 'Decks';
-          var uri = new URI($window.location);
-          uri.filename(target);
-          uri.query('');
-          $window.location = uri.toString();
         },function(reason) {
           $ErrorResponseAlert(reason);
         }
