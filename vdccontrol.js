@@ -21,7 +21,10 @@ function vdccontrol_init(json_web_token, apiurl, vdc_id, g8_domain, headerEnable
     vdc_id: vdc_id,
     g8_domain: g8_domain
   };
-  localStorage.setItem('vdccontrol', JSON.stringify(vdccontrol) );
+  if (json_web_token || !localStorage.vdccontrol) {
+     localStorage.setItem('vdccontrol', JSON.stringify(vdccontrol));
+
+ }
 
 }
 

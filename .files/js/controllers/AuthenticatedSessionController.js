@@ -21,6 +21,10 @@
     });
 
     var portalSessionCookie = ipCookie('beaker.session.id');
+    var vdccontrol = JSON.parse(localStorage.getItem('vdccontrol'));
+    if (vdccontrol.json_web_token) {
+     var jwt = vdccontrol.json_web_token;
+    }
 
     // Binding and Watch
     $scope.$watch('cloudspaces', cloudspaces, true);
@@ -32,7 +36,7 @@
 
     // Functions
     function checkUserAccountAccessibility() {
-      if (portalSessionCookie) {
+      if (portalSessionCookie || jwt) {
         if (!User.current() || User.current().api_key !== portalSessionCookie) {
           User.getPortalLoggedinUser().then(function(username) {
             if (username !== 'guest') {
