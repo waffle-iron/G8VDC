@@ -20,7 +20,6 @@
     $scope.orderUsers = orderUsers;
     // autocomplete configuration object
     $scope.autocompleteOptions = {
-      shadowInput: true,
       highlightFirst: true,
       boldMatches: true,
       delay: 0,

@@ -34,6 +34,7 @@
     $scope.pause = pause;
     $scope.resume = resume;
     $scope.updateDescriptionPopup = updateDescriptionPopup;
+    $scope.numeral = numeral;
     $scope.tabactive = {
         actions: true,
         console: false,
@@ -50,6 +51,7 @@
     $scope.$watch('sizes', updateMachineSize, true);
     $scope.$watch('images', updateMachineSize, true);
     $scope.$watch('tabactive.snapshots', tabActiveSpanShots, true);
+    $scope.$watch('currentSpace.id',currentSpaceId);
 
     // Initialization: Functions invokation logic
     $scope.clearDisk();
@@ -306,15 +308,15 @@
       modalInstance.result.then(function() {
         LoadingDialog.show('Deleting machine');
         Machine.delete($scope.machine.id).then(function() {
+          LoadingDialog.hide();
           var machine = _.find($scope.machines, function(machine) {
             return machine.id === $scope.machine.id;
+            $scope.machines.splice($scope.machines.indexOf(machine) , 1);
           });
-          if (machine) {
-            machine.status = 'DESTROYED';
-          }
-          $scope.machines.splice($scope.machines.indexOf(machine) , 1);
+          // if (machines) {
+          //   machine.status = 'DESTROYED';
+          // }
           $location.path('/list');
-          LoadingDialog.hide();
         }, function(reason) {
           LoadingDialog.hide();
           $ErrorResponseAlert(reason);
@@ -660,6 +662,15 @@
           resolve: {},
           scope: $scope
         });
+    }
+    function currentSpaceId() {
+      if ($scope.currentSpace) {
+        Size.list($scope.currentSpace.id).then(function(sizes) {
+          $scope.sizes = sizes;
+        },function(reason) {
+          $ErrorResponseAlert(reason);
+        });
+      }
     }
   }
 

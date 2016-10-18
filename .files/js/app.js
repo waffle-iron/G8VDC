@@ -5,98 +5,127 @@ var cloudscalers = angular.module('cloudscalers', [
   'cloudscalers.services',
   'cloudscalers.controllers',
   'ngRoute',
-  // 'angular-szn-autocomplete',
+  'angular-szn-autocomplete',
   'ui.bootstrap'
 ]);
 
 cloudscalers
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/decks', {
-        templateUrl: 'Portal/Decks/Decks.html'
+        templateUrl: 'Portal/Decks/Decks.html',
+        title: 'Decks'
     });
     $routeProvider.when('/list', {
         templateUrl: 'shared/list.html',
-        controller: 'MachineController'
+        controller: 'MachineController',
+        title: 'List'
     });
     $routeProvider.when('/new', {
-      templateUrl: 'Portal/Decks/MachineDeck/pages/new.html'
+        templateUrl: 'Portal/Decks/MachineDeck/pages/new.html',
+        title: 'New'
     });
     $routeProvider.when('/edit/:machineId/:activeTab?', {
         templateUrl: 'shared/details.html',
-        controller: 'MachineEditController'
+        controller: 'MachineEditController',
+        title: 'MachineDeck'
     });
     $routeProvider.when('/CloudSpaceSettings', {
         templateUrl: 'Portal/Admin/CloudSpaceSettings/CloudSpaceSettings.html',
-        controller: 'CloudSpaceManagementController'
+        controller: 'CloudSpaceManagementController',
+        title: 'CloudSpaceSettings'
     });
     $routeProvider.when('/AccountSettings', {
         templateUrl: 'Portal/Admin/AccountSettings/AccountSettings.html',
-        controller: 'AccountSettingsController'
+        controller: 'AccountSettingsController',
+        title: 'AccountSettings'
     });
     $routeProvider.when('/GettingStarted', {
-        templateUrl: 'Portal/Support/getting-started/getting-started.html'
+        templateUrl: 'Portal/Support/getting-started/getting-started.html',
+        title: 'GettingStarted'
     });
     $routeProvider.when('/ApiDocs', {
-        templateUrl: 'Portal/Support/ApiDocs/ApiDocs.html'
+        templateUrl: 'Portal/Support/ApiDocs/ApiDocs.html',
+        title: 'ApiDocs'
     });
     $routeProvider.when('/Support', {
-        templateUrl: 'Portal/Support/Support.html'
+        templateUrl: 'Portal/Support/Support.html',
+        title: 'Support'
     });
     $routeProvider.when('/MachineDeck', {
         templateUrl: 'shared/list.html',
-        controller: 'MachineController'
+        controller: 'MachineController',
+        title: 'MachineDeck'
     });
     $routeProvider.when('/Portforwarding', {
         templateUrl: 'Portal/Decks/NetworkDeck/Portforwarding.html',
-        controller: 'PortforwardingController'
+        controller: 'PortforwardingController',
+        title: 'Portforwarding'
     });
     $routeProvider.when('/NetworkDeck', {
         templateUrl: 'Portal/Decks/NetworkDeck/NetworkDeck.html',
-        controller: 'NetworkController'
+        controller: 'NetworkController',
+        title: 'NetworkDeck'
     });
     $routeProvider.when('/Consumption', {
         templateUrl: 'Portal/Admin/Consumption/Consumption.html',
-        controller: 'AccountController'
+        controller: 'AccountController',
+        title: 'Consumption'
     });
     $routeProvider.when('/Billing', {
         templateUrl: 'Portal/Admin/AccountSettings/Billing.html',
-        controller: 'BillingController'
+        controller: 'BillingController',
+        title: 'Billing'
     });
     $routeProvider.when('/Profile', {
         templateUrl: 'Portal/Admin/Profile/Profile.html',
-        controller: 'UsersController'
+        controller: 'UsersController',
+        title: 'Profile'
     });
     $routeProvider.when('/ResetPassword', {
         templateUrl: 'Public/Authentication/Login/ResetPassword.html',
-        controller: 'ResetPasswordController'
+        controller: 'ResetPasswordController',
+        title: 'ResetPassword'
+    });
+    $routeProvider.when('/Activation', {
+      templateUrl: 'Activation.html',
+      controller: 'ActivateUserController',
+      title: 'Activation'
     });
     // Docs
     $routeProvider.when('/Docs', {
-        templateUrl: 'Portal/Docs/Docs.html'
+        templateUrl: 'Portal/Docs/Docs.html',
+        title: 'Docs'
     });
     $routeProvider.when('/Docs/access-your-cloud-space-using-openvpn', {
-        templateUrl: 'Portal/Docs/TechnicalTutorials/access-your-cloud-space-using-openvpn.html'
+        templateUrl: 'Portal/Docs/TechnicalTutorials/access-your-cloud-space-using-openvpn.html',
+        title: 'Access your Cloud Space using OpenVPN'
     });
     $routeProvider.when('/Docs/enable-root-access-on-ubuntu-over-ssh', {
-        templateUrl: 'Portal/Docs/TechnicalTutorials/enable-root-access-on-ubuntu-over-ssh.html'
+        templateUrl: 'Portal/Docs/TechnicalTutorials/enable-root-access-on-ubuntu-over-ssh.html',
+        title: 'Enable Root Access on ubuntu over SSH'
     });
     $routeProvider.when('/Docs/getting-started-with-jumpscale', {
-        templateUrl: 'Portal/Docs/TechnicalTutorials/getting-started-with-jumpscale.html'
+        templateUrl: 'Portal/Docs/TechnicalTutorials/getting-started-with-jumpscale.html',
+        title: 'Getting Started with JumpScale'
     });
     $routeProvider.when('/Docs/how-to-configure-ubuntu-to-connect-to-openvpn', {
-        templateUrl: 'Portal/Docs/TechnicalTutorials/how-to-configure-ubuntu-to-connect-to-openvpn/tutorial.html'
+        templateUrl: 'Portal/Docs/TechnicalTutorials/how-to-configure-ubuntu-to-connect-to-openvpn/tutorial.html',
+        title: 'How to configure Ubuntu to connect to OpenVPN'
     });
     $routeProvider.when('/Docs/my-first-machine-linux', {
-        templateUrl: 'Portal/Docs/TechnicalTutorials/my-first-machine-linux/tutorial.html'
+        templateUrl: 'Portal/Docs/TechnicalTutorials/my-first-machine-linux/tutorial.html',
+        title: 'My First Machine Linux'
     });
     $routeProvider.when('/Docs/my-first-machine-windows', {
-        templateUrl: 'Portal/Docs/TechnicalTutorials/my-first-machine-windows/tutorial.html'
+        templateUrl: 'Portal/Docs/TechnicalTutorials/my-first-machine-windows/tutorial.html',
+        title: 'My First Machine Windows'
     });
     $routeProvider.when('/Docs/pptp-connection-to-space-from-windows10', {
-        templateUrl: 'Portal/Docs/TechnicalTutorials/pptp-connection-to-space-from-windows10/tutorial.html'
+        templateUrl: 'Portal/Docs/TechnicalTutorials/pptp-connection-to-space-from-windows10/tutorial.html',
+        title: 'Setup a PPTP connection to Space from Windows10'
     });
 
-    $routeProvider.otherwise({redirectTo: '/list'});
+    $routeProvider.otherwise({redirectTo: '/decks'});
   }])
   .config(['$interpolateProvider','$compileProvider', function($interpolateProvider, $compileProvider) {
     // Angular uses {{}} for data-binding. This operator will conflict with JumpScale macro syntax.
@@ -115,6 +144,8 @@ angular.module('cloudscalers.services',['ng'])
     }
     //disable IE ajax request caching
     $httpProvider.defaults.headers.get['If-Modified-Since'] = '0';
+    $httpProvider.defaults.headers.post['Accept'] = 'application/json';
+    $httpProvider.defaults.headers.post['Content-Type'] = 'application/json';
   }]);
 
 var cloudscalersControllers = angular.module('cloudscalers.controllers', [
@@ -157,6 +188,8 @@ cloudscalers.factory('$ErrorResponseAlert',function($alert) {
   return function(reason) {
     if (reason.status === 500 || reason.status === 502 || reason.status === 504 || reason.data === null) {
       $alert('An unexpected error has occurred');
+    } else if (reason.status === 401) {
+      $alert('Please login to access full functionality');
     } else {
       var message = '';
       try {
@@ -173,7 +206,7 @@ cloudscalers.factory('$ErrorResponseAlert',function($alert) {
   };
 });
 
-cloudscalers.run(function($templateCache) {
+cloudscalers.run(function($templateCache, $rootScope) {
   $templateCache.put('autocomplete-result-template.html',
         '<ul ng-show="show" class="szn-autocomplete-results"> ' +
           '<li ' +
@@ -190,4 +223,7 @@ cloudscalers.run(function($templateCache) {
           '</li> ' +
       '</ul>'
   );
+  $rootScope.$on("$routeChangeSuccess", function(event, currentRoute, previousRoute) {
+    $rootScope.title = currentRoute.title;
+  });
 });

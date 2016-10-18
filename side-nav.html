@@ -1,4 +1,4 @@
-<div class="sideNav" ng-controller="sideNavController" ng-show="!noAccount">
+<div class="sideNav" ng-controller="sideNavController" ng-show="currentUser.acl.cloudspace > 0 && !noAccount">
   <ul class="padding-left-none">
     <li class="header orange" >
       <a href="#/list" tourtip-step="2" tourtip="Create and Manage your Virtual Machines"  tourtip-placement="left">Machines</a>
@@ -30,8 +30,8 @@
         </li>
       </ul>
     </li>
-    <li class="header blue">
+    <!-- <li class="header blue">
       <a href="#/Docs">Knowledge Base</a>
-    </li>
+    </li> -->
   </ul>
 </div>

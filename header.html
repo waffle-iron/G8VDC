@@ -1,23 +1,28 @@
 <div class="navbar navbar-inverse navbar-inner navbar-form" ng-controller="CloudSpaceNavigatorController" role="navigation">
   <div class="subnavbar-inner">
     <div class="container relative">
-      <a class="logo" href="#/Decks"><img src=".files/img/logo-colored.png" title="Home" class="margin-vertical-small" width='132' height='56'></a>
+      <a class="logo" href="#/decks"><img src=".files/img/logo-colored.png" title="Home" class="margin-vertical-small"></a>
       <ul class="stick-top-right">
         <li class="right">
-          <a class="logout sm-font" href="/restmachine//system/oauth/getOauthLogoutURl" >
-            <i class="fa fa-lock"></i>
+          <a class="logout sm-font" ng-if="currentUser" href="/restmachine/system/oauth/getOauthLogoutURl" >
+            <i class="fa fa-sign-out"></i>
             <span>Logout</span>
           </a>
+          <a class="logout sm-font" ng-if="!currentUser" href="/restmachine/system/oauth/authenticate" >
+            <i class="fa fa-sign-in"></i>
+            <span>Login</span>
+          </a>
         </li>
-        <li class="right"><a class="user-name" href="#/Profile" ng-cloak>
-          <i class="fa fa-user"></i>
-          {[currentUser.username]}
-        </a>
+        <li class="right" ng-if="currentUser">
+          <a class="user-name" href="#/Profile" ng-cloak>
+            <i class="fa fa-user"></i>
+             {[currentUser.username]}
+          </a>
         </li>
       </ul>
     </div>
   </div>
-  <nav class="navbar navbar-default " role="navigation">
+  <nav class="navbar navbar-default" role="navigation">
     <div class="container">
       <div class="navbar-header navbar-right">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-list">
@@ -30,20 +35,20 @@
       <div class="collapse navbar-collapse" id="navbar-list">
         <ul class="nav navbar-nav margin-all-none">
           <li><a href="#/decks">Home</a></li>
-          <li class="dropdown dropdown-accordion" ng-show="!noAccount">
-            <span class="cloudspace-nav margin-left-none padding-left-none block margin-right-medium"
+          <li class="dropdown dropdown-accordion" ng-if="currentUser" ng-show="!noAccount">
+            <a id="drop1" role="button" class="margin-left-none padding-left-none" data-toggle="dropdown"
               tourtip="Manage here your Cloud spaces. The Cloud Space is your private virtual datacenter including your compute, storage and networking capacity" tourtip-placement="bottom" tourtip-step="0">
-              <span ng-cloak>{[currentSpace.accountName]} / {[currentSpace.name]}</span>
-              <b class="caret"></b>
-            </span>
+                <span ng-cloak>{[currentSpace.accountName]} / {[currentSpace.name]}</span>
+                <b class="caret"></b>
+            </a>
             <div class="dropdown-menu open-cloudspace-nav" role="menu" aria-labelledby="dLabel">
               <div class="accordionInside padding-bottom-none">
                 <div class="panel-group gray" id="accordion" close-others="false">
                   <div ng-repeat="account in AccountCloudSpaceHierarchy" class="panel panel-default">
                     <div class="panel-heading">
                       <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#{[account.name | nospace]}">{[account.name]}
-                          <i ng-click="goToAccountSettings($event, account.id)" ng-show="account.cuurentAccountInAccountList != 'NoAccessOnAccount'" class="fa fa-users right txt-dark-blue sm-color" title="Account settings"></i>
+                        <a data-toggle="collapse" onclick="event.preventDefault()" ng-click="fixDropdown($event)" data-parent="#accordion" href="#{[account.name | nospace]}">{[account.name]}
+                          <i ng-click="goToAccountSettings($event, account.id)"  class="fa fa-users right txt-dark-blue sm-color" title="Account settings"></i>
                         </a>
                       </h4>
                     </div>
@@ -86,8 +91,7 @@
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Location</label>
                       <div class="controls col-sm-9">
-                        <select class="form-control" ng-repeat="location in locations" required>
-                          <option ng-class="{ 'selected': selectedLocation == location.locationCode }" ng-click="changeLocation(location)">{[ location.name ]}</option>
+                        <select class="form-control" ng-model="newCloudSpace.locationCode" required ng-options="location.locationCode as location.name for location in locations">
                         </select>
                       </div>
                     </div>
@@ -101,14 +105,14 @@
               </script>
             </div>
           </li>
-          <li ng-show="currentUser.acl.cloudspace > 0 && !noAccount"><a href="/#/CloudSpaceSettings" class="padding-left-none content-gear"><i class="fa fa-cog margin-right-small" title="Cloud Space settings"></i></a></li>
+          <li ng-show="currentUser.acl.cloudspace > 0 && !noAccount"><a href="#/CloudSpaceSettings" class="padding-left-none content-gear"><i class="fa fa-cog margin-right-small" title="Cloud Space settings"></i></a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right margin-all-none">
           <li><a href="#/GettingStarted" tourtip="1 min to read" tourtip-step="5" tourtip-placement="bottom">Getting Started</a></li>
-          <li><a href="#/ApiDocs">Machine API</a></li>
+          <li><a href="#/ApiDocs" ng-show="currentUser.acl.cloudspace > 0 && !noAccount">Machine API</a></li>
           <li><a href="#/Docs">Knowledge Base</a></li>
           <li><a href="#/Support">Support</a></li>
-          <li ng-show="currentUser.acl.account > 0"><a href="#/Consumption">Consumption</a></li>
+          <!-- <li ng-show="currentUser.acl.account > 0"><a href="#/Consumption">Consumption</a></li> -->
         </ul>
       </div>
     </div>

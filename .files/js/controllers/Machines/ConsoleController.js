@@ -3,6 +3,8 @@ angular.module('cloudscalers.controllers')
         $scope.machineConsoleUrlResult = {};
         $scope.novnc_connectioninfo = {};
 
+        $scope.loginPaste = false;
+        $scope.passwordPaste = false;
 
         $scope.$watch('tabactive.console+$parent.machine.status',function(){
             if ($scope.tabactive.console && $scope.$parent.machine.status == "RUNNING"){
@@ -25,6 +27,22 @@ angular.module('cloudscalers.controllers')
             for (var i=0; i<text.length; i++){
                 rfb.sendKey(text.charCodeAt(i));
             }
+        };
+
+        $scope.showLoginPaste = function(event){
+          if(event.ctrlKey){
+            $scope.loginPaste = true;
+          } else {
+            $scope.loginPaste = false;
+          }
+        };
+
+        $scope.showPasswordPaste = function(event){
+          if(event.ctrlKey){
+            $scope.passwordPaste = true;
+          } else {
+            $scope.passwordPaste = false;
+          }
         };
 
         $scope.$watch('machineConsoleUrlResult',function(newvalue, oldvalue){

@@ -115,6 +115,7 @@ Your Defense shield assigns a fix IP address during the initial OS boot.">
                                     Reset
                                 </a>
                             </li>
+
                             <li ng-show="currentUser.acl.machine > 1 && machine.locked == false">
                                 <a class="forTipSnap" ng-click="createSnapshot()" ng-class="{'action-disabled': machine.locked != false}" tourtip="Taking a snapshot ensures you have a point in time to return to. Taking a snapshot takes seconds.">
                                     <i class="fa fa-camera"></i>
@@ -129,7 +130,7 @@ Your Defense shield assigns a fix IP address during the initial OS boot.">
                                     <div class="modal-body">
                                         <ul>
                                             Name:
-                                            <input ng-model="form.newSnapshotName" type="text" class="input-large" placeholder="Name"/>
+                                            <input ng-model="form.newSnapshotName" required ng-minlength="2" type="text" class="input-large" placeholder="Name"/>
                                         </ul>
                                     </div>
                                      <div class="modal-footer">
@@ -203,6 +204,30 @@ Your Defense shield assigns a fix IP address during the initial OS boot.">
                     </div>
                   </script>
               </li>
+              <li ng-show="machine.status == 'HALTED' && machine.locked == false">
+                <a class="forTip" ng-click="cloneMachine()">
+                    <i class="fa fa-clone" aria-hidden="true"></i>
+                    Clone
+                </a>
+                <script type="text/ng-template" id="cloneMachineDialog.html">
+                  <div class="modal-header">
+                      <h3>Clone machine ?</h3>
+                  </div>
+                  <div class="modal-body">
+                      <ul>
+                          Name: <input ng-model="clone.name" type="text" class="input-large" />
+                      </ul>
+                      <div class="alert alert-warning margin-top-large">
+                      Cloning a machine might take some time during this process your Virtual Machine will be locked.
+                      Limited actions will be available.
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button class="btn btn-primary ok" ng-click="ok()">Clone Machine</button>
+                      <button class="btn cancel" ng-click="cancel()">Cancel</button>
+                  </div>
+                </script>
+              </li>
               <li ng-show="currentUser.acl.cloudspace > 1 && machine.locked == false">
                       <a ng-click="destroy()">
                           <i class=" fa fa-times-circle-o"></i>
@@ -224,28 +249,28 @@ Your Defense shield assigns a fix IP address during the initial OS boot.">
                           </form>
                       </script>
                   </li>
-                    </ul>
-                </div>
+                </ul>
+            </div>
             </div>
             <script type="text/ng-template" id="updateDescription.html">
-                                <form name="form" class="form-horizontal" ng-submit="submit()">
-                                    <div class="modal-header">
-                                        <h3>Edit Description</h3>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="control-group">
-                                            <label class="control-label txt-gray" for="inputNewCloudSpaceName">Description</label>
-                                            <div class="controls">
-                                                <textarea class="description-textarea" ng-model="machine.newdescription" type="text" class="input-xlarge" placeholder="Description"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary ok">Ok</button>
-                                        <button type="button" class="btn cancel" ng-click="cancel()">Cancel</button>
-                                    </div>
-                                    </form>
-                </script>
+              <form name="form" class="form-horizontal" ng-submit="submit()">
+                <div class="modal-header">
+                    <h3>Edit Description</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="control-group">
+                        <label class="control-label txt-gray" for="inputNewCloudSpaceName">Description</label>
+                        <div class="controls">
+                            <textarea class="description-textarea" ng-model="machine.newdescription" type="text" class="input-xlarge" placeholder="Description"></textarea>
+                        </div>
+                    </div>
+                </div>
+                 <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary ok">Ok</button>
+                    <button type="button" class="btn cancel" ng-click="cancel()">Cancel</button>
+                </div>
+                </form>
+              </script>
             </div>
           </tab>
           <tab id="console" heading="Console" active="tabactive.console">
@@ -265,18 +290,19 @@ Your Defense shield assigns a fix IP address during the initial OS boot.">
                         </div>
 
                         <div class="span2 txt-verdana">
-                            <h4 class="txt-15 txt-normal margin-bottom-none">Initial Login</h4>
+                            <h4 class="txt-15 txt-normal margin-bottom-none" ng-click="showLoginPaste($event)">Initial Login</h4>
                             <p>
-                                {[machine.accounts[0].login]}<a class="margin-left-small" ng-click="sendText(rfb, machine.accounts[0].login)"><i class="fa fa-clipboard" title="Copy username to console"></i></a>
+                                {[machine.accounts[0].login]}
+                                <a class="margin-left-small" ng-click="sendText(rfb, machine.accounts[0].login)"><i class="fa fa-clipboard" ng-show="loginPaste" title="Copy username to console"></i></a>
                             </p>
                         </div>
                         <div class="span2 txt-verdana">
-                            <h4 class="txt-15 txt-normal margin-bottom-none">Initial Password</h4>
+                            <h4 class="txt-15 txt-normal margin-bottom-none" ng-click="showPasswordPaste($event)">Initial Password</h4>
                             <div class="margin-left-xlarge margin-top-small">
                               <a ng-hide="passwordHidden" ng-click="passwordHidden = true" title="Show password" class="margin-right-small"><i class="fa fa-eye"></i></a>
                               <span ng-show="passwordHidden">{[machine.accounts[0].password]}</span>
                               <a ng-show="passwordHidden" ng-click="passwordHidden = false" title="Hide password" class="margin-right-small"><i class="fa fa-eye-slash"></i></a>
-                              <a ng-click="sendText(rfb, machine.accounts[0].password)"><i class="fa fa-clipboard" title="Copy password to console"></i></a>
+                              <a ng-click="sendText(rfb, machine.accounts[0].password)"><i class="fa fa-clipboard" ng-show="passwordPaste" title="Copy password to console"></i></a>
                             </div>
                         </div>
                         <div class="span6 margin-top-small right txt-right">
@@ -382,11 +408,11 @@ Your Defense shield assigns a fix IP address during the initial OS boot.">
                 <div ng-include src="'Portal/Decks/MachineDeck/includes/machine_history.html'"></div>
             </div>
           </tab>
-          <!-- <tab heading="Sharing" active="tabactive.sharing">
+          <tab heading="Sharing" active="tabactive.sharing">
             <div id="sharing" class="tab-pane">
               <div ng-include src="'Portal/Decks/MachineDeck/includes/machine_share.html'"></div>
             </div>
-          </tab> -->
+          </tab>
           <tab heading="Port Forwards" active="tabactive.portForwards">
             <div id="portForwards" class="tab-pane">
                 <div ng-include src="'Portal/Decks/MachineDeck/includes/machine_portforwards.html'"></div>

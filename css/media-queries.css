@@ -131,7 +131,7 @@
 	.gray .panel-body {background: inherit !important;border-top: 0 !important;}
 	.gray .panel-heading.open .panel-title>a{background: url(../img/images/acc-arrow-open-white.png) 11px 10px no-repeat #4E8BB3 !important;padding: 8px 25px;color: #fff !important;}
 	.pull-right .right { margin: 0 0 0 0;}
-	.logo {    margin: 12px 0 10px 0;display: inline-block;}
+	.logo {    display: inline-block;}
 	.creditForm .nameField { width: 70% !important; }
 	.boxes p { width: 77% !important; }
 	.boxes.font { display: inline-block; width: 100%; margin: 20px 0 !important; }
@@ -175,6 +175,7 @@
 @media (max-width: 768px) {
 	.nav-tabs { border-bottom: 1px solid #345E79;}
 	.navbar-inverse .navbar-toggle {border-color: #333;margin: 8px 35px 0 0;}
+	.margin-vertical-small{height: 50px; width: 100px;  margin-bottom: 36px;}
 	.nameField textarea { font-size: 16px; }
 	.creditForm .nameField, .nameField textarea, .osimage-label, .signUpForm .inputWrap input, .controls2, .sideNav { width: 100% !important; }
 	.boxes.font, .open-cloudspace-nav, .nameField, .nameField input,.nameField select, .modal { width: 100%; }

@@ -777,7 +777,7 @@ label + .controls {
 @media -sass-debug-info{filename{font-family:file\:\/\/less\/custom\.less}line{font-family:\00003144}}
 .account-container.stacked {
   width: 617px;
-  margin: 100px auto 0;
+  margin: 100px auto 0 300px;
   border: 7px solid rgba(255, 255, 255, 0.2);
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -787,21 +787,21 @@ label + .controls {
 @media -sass-debug-info{filename{font-family:file\:\/\/less\/custom\.less}line{font-family:\00003145}}
 .content.clearfix.padding {
   color: #FFF;
-  background: #06a7e2;
+  background: #345e79;
   /* Old browsers */
-  background: -moz-linear-gradient(top, rgba(6, 167, 226, 0.6) 0%, rgba(255, 255, 255, 0.6) 100%);
+  /*background: -moz-linear-gradient(top, rgba(6, 167, 226, 0.6) 0%, rgba(255, 255, 255, 0.6) 100%);*/
   /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(6, 167, 226, 0.6)), color-stop(100%, rgba(255, 255, 255, 0.6)));
+  /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(6, 167, 226, 0.6)), color-stop(100%, rgba(255, 255, 255, 0.6)));*/
   /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, rgba(6, 167, 226, 0.6) 0%, rgba(255, 255, 255, 0.6) 100%);
+  /*background: -webkit-linear-gradient(top, rgba(6, 167, 226, 0.6) 0%, rgba(255, 255, 255, 0.6) 100%);*/
   /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, rgba(6, 167, 226, 0.6) 0%, rgba(255, 255, 255, 0.6) 100%);
+  /*background: -o-linear-gradient(top, rgba(6, 167, 226, 0.6) 0%, rgba(255, 255, 255, 0.6) 100%);*/
   /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, rgba(6, 167, 226, 0.6) 0%, rgba(255, 255, 255, 0.6) 100%);
+  /*background: -ms-linear-gradient(top, rgba(6, 167, 226, 0.6) 0%, rgba(255, 255, 255, 0.6) 100%);*/
   /* IE10+ */
-  background: linear-gradient(to bottom, rgba(6, 167, 226, 0.6) 0%, rgba(255, 255, 255, 0.6) 100%);
+  /*background: linear-gradient(to bottom, rgba(6, 167, 226, 0.6) 0%, rgba(255, 255, 255, 0.6) 100%);*/
   /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#345E79', endColorstr='#ffffff', GradientType=0);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#345E79', endColorstr='#ffffff', GradientType=0);*/
   /* IE6-9 */
 }
 /* line 147, less/custom.less */
@@ -1123,7 +1123,7 @@ canvas {
 @media -sass-debug-info{filename{font-family:file\:\/\/less\/custom\.less}line{font-family:\00003198}}
 .sideNav {
   position: absolute;
-  top: 0;
+  top: 80px;
   right: 0;
   width: 180px;
   height: auto;
@@ -1447,12 +1447,12 @@ canvas {
   font-size: 14px;
   color: #000000 !important;
   font-weight: normal;
-  background: url(../img/images/acc-arrow-close.png) 11px 18px no-repeat #F3F3F3;
+  background: url(../.files/img/images/acc-arrow-close.png) 11px 18px no-repeat #F3F3F3;
 }
 /* line 257, less/custom.less */
 @media -sass-debug-info{filename{font-family:file\:\/\/less\/custom\.less}line{font-family:\00003257}}
 .gray .panel-heading.open .panel-title > a {
-  background: url(../img/images/acc-arrow-open.png) 9px 19px no-repeat #F3F3F3;
+  background: url(../.files/img/images/acc-arrow-open.png) 9px 19px no-repeat #F3F3F3;
 }
 /* line 258, less/custom.less */
 @media -sass-debug-info{filename{font-family:file\:\/\/less\/custom\.less}line{font-family:\00003258}}
@@ -1477,7 +1477,7 @@ canvas {
 /* line 262, less/custom.less */
 @media -sass-debug-info{filename{font-family:file\:\/\/less\/custom\.less}line{font-family:\00003262}}
 .gray .panel-title > a:first-child:hover {
-  background: url(../img/images/acc-arrow-close.png) 11px 18px no-repeat #F3F3F3;
+  background: url(../.files/img/images/acc-arrow-close.png) 11px 18px no-repeat #F3F3F3;
   text-decoration: none;
 }
 /* line 263, less/custom.less */
@@ -1602,7 +1602,6 @@ canvas {
 @media -sass-debug-info{filename{font-family:file\:\/\/less\/custom\.less}line{font-family:\00003281}}
 .create-cloudspace {
   margin: 7px 0 7px -21px;
-  display: inline-block;
 }
 /* line 282, less/custom.less */
 @media -sass-debug-info{filename{font-family:file\:\/\/less\/custom\.less}line{font-family:\00003282}}
@@ -2559,7 +2558,7 @@ body ul#resources li.resource ul.endpoints li.endpoint ul.operations li.operatio
 /* line 491, less/custom.less */
 @media -sass-debug-info{filename{font-family:file\:\/\/less\/custom\.less}line{font-family:\00003491}}
 .login-symbol {
-  background: url(../img/images/login-symbol.png) no-repeat 31px 19px;
+  /*background: url(../img/images/login-symbol.png) no-repeat 31px 19px;*/
   padding: 15px 34px;
   padding-bottom: 20px;
 }

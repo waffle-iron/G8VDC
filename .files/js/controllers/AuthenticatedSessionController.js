@@ -21,6 +21,10 @@
     });
 
     var portalSessionCookie = ipCookie('beaker.session.id');
+    var vdccontrol = JSON.parse(localStorage.getItem('vdccontrol'));
+    if (vdccontrol.json_web_token) {
+     var jwt = vdccontrol.json_web_token;
+    }
 
     // Binding and Watch
     $scope.$watch('cloudspaces', cloudspaces, true);
@@ -29,22 +33,23 @@
 
     // Initialization: Functions invokation logic
     checkUserAccountAccessibility();
-    $scope.loadSpaces();
 
     // Functions
     function checkUserAccountAccessibility() {
-      if (portalSessionCookie) {
+      if (portalSessionCookie || jwt) {
         if (!User.current() || User.current().api_key !== portalSessionCookie) {
           User.getPortalLoggedinUser().then(function(username) {
             if (username !== 'guest') {
               autoLogin(username);
             }
+            $scope.loadSpaces();
           }, function(reason) {
             $scope.loginError = reason.status;
           });
 
         }else {
           autoLogin(User.current().username);
+          $scope.loadSpaces();
         }
       }
     }
@@ -70,7 +75,7 @@
       setInitialAccount();
     }
     function setCurrentCloudspace(space) {
-      if (space === null) {
+      if (space === null || space === undefined) {
         return;
       }
       CloudSpace.setCurrent(space);
@@ -86,10 +91,8 @@
       }
     }
     function setCurrentAccount(currentAccountId) {
-      // $scope.currentAccount = {}; is that needed?
-      $scope.currentAccount = {};
       $scope.currentAccount.userRightsOnAccount = {};
-      if ($scope.currentAccount.id) {
+      if (currentAccountId) {
         Account.get(currentAccountId).then(function(account) {
           $scope.currentAccount = account;
           $scope.currentAccount.userRightsOnAccount = account.acl;
@@ -105,15 +108,11 @@
       }
     }
     function loadSpaces() {
+      if ($scope.currentUser === undefined) {
+         return []; //return empty list when not logged in
+      }
       return CloudSpace.list().then(function(cloudspaces) {
-        var singleCloudspace = _.where(cloudspaces, {id: vdccontrol.vdc_id});
-        $scope.cloudspaces = singleCloudspace;
-        if (cloudspaces.length === 0) {
-          $timeout(function() {
-            $scope.noAccount = true;
-            SessionData.setSpace();
-          });
-        }
+        $scope.cloudspaces = cloudspaces;
         return cloudspaces;
       }, function(reason) {
         $ErrorResponseAlert(reason);
@@ -141,7 +140,7 @@
         var userInCurrentAccount = _.find($scope.currentAccount.userRightsOnAccount , function(acl) {
           return acl.userGroupId === $scope.currentUser.username;
         });
-        // $scope.currentUser.acl.account = 0;
+        $scope.currentUser.acl.account = 0;
         if (userInCurrentAccount) {
           var currentUserAccessrightOnAccount = userInCurrentAccount.right.toUpperCase();
           if (currentUserAccessrightOnAccount === 'R') {

@@ -21,13 +21,16 @@ function vdccontrol_init(json_web_token, apiurl, vdc_id, g8_domain, headerEnable
     vdc_id: vdc_id,
     g8_domain: g8_domain
   };
-  localStorage.setItem('vdccontrol', JSON.stringify(vdccontrol) );
+  if (json_web_token || !localStorage.vdccontrol) {
+     localStorage.setItem('vdccontrol', JSON.stringify(vdccontrol));
+
+ }
 
 }
 
 // We need to feed vdccontrol with config values throw vdccontrol_init()
 var json_web_token  = getParamValue('jwt');
-var headerEnable = false;
+var headerEnable = !json_web_token;
 var apiurl = '/restmachine/cloudapi';
 var vdc_id = parseInt(getParamValue('vdc_id'));
 var g8_domain = getParamValue('g8_domain');

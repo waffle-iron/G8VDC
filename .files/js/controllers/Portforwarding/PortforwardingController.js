@@ -9,7 +9,7 @@
     .directive('numbersOnly', numbersOnly);
 
   function PortforwardingController($scope, Networks, Machine, $modal, $interval,
-    $ErrorResponseAlert, CloudSpace, $timeout, $routeParams, $window) {
+    $ErrorResponseAlert, CloudSpace, $timeout, $routeParams, $window, LoadingDialog) {
     var cloudspaceupdater;
     $scope.portforwarding = [];
     $scope.commonPortVar = '';
@@ -125,10 +125,9 @@
         });
 
       modalInstance.result.then(function(data) {
-          $scope.message = true;
-          $scope.statusMessage = data.statusMessage;
+        LoadingDialog.show('Creating Port Forward');
           $timeout(function() {
-            $scope.message = false;
+            LoadingDialog.hide()
           }, 3000);
         });
     }
@@ -140,14 +139,17 @@
 
       $scope.delete = function() {
           $scope.editRule.action = 'delete';
+          LoadingDialog.show('Deleting');
           Networks.deletePortforward($scope.currentSpace.id, $scope.editRule.ip, $scope.editRule.publicPort).then(
             function(result) {
               $modalInstance.close($scope.editRule);
               $scope.portforwarding = result.data;
+              LoadingDialog.hide();
               $scope.updatePortforwardList();
             },
             function(reason) {
               $ErrorResponseAlert(reason);
+              LoadingDialog.hide();
             }
           );
         };

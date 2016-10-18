@@ -2,8 +2,8 @@
 <div>
   <div ng-cloak ng-show="(machines | filter:machineIsManageable).length == 0">
     <h1>Machines</h1>
-    Welcome to the Machines. Hit Create Machine and in less than 5 seconds it will be starting!
-    New users can find useful info about the Machines in our <a href="#/GettingStarted">Quick Tutorial</a>.
+    <p>Welcome to the Machines. Hit Create Machine and in less than 5 seconds it will be starting!</p>
+    <p>New users can find useful info about the Machines in our <a href="#/GettingStarted">Quick Tutorial Guide</a>.</p>
   </div>
   <tour step="steps.machineListTourStep" post-step="postStepCallback()" post-tour="tourComplete('machineListTourStep')">
   <div id="tabbable">
