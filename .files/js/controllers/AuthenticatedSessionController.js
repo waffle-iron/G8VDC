@@ -22,9 +22,8 @@
 
     var portalSessionCookie = ipCookie('beaker.session.id');
     var vdccontrol = JSON.parse(localStorage.getItem('vdccontrol'));
-    if (vdccontrol.json_web_token) {
-     var jwt = vdccontrol.json_web_token;
-    }
+    var jwt = vdccontrol.json_web_token;
+    var vdc_id = vdccontrol.vdc_id;
 
     // Binding and Watch
     $scope.$watch('cloudspaces', cloudspaces, true);
@@ -125,10 +124,11 @@
       if (!$scope.cloudspaces) {return;}
 
       var currentCloudSpaceFromList;
-      if ($scope.currentSpace) {
-        currentCloudSpaceFromList = _.find($scope.cloudspaces, function(cloudspace) {
-          return cloudspace.id === $scope.currentSpace.id;
-        });
+      if ($scope.currentSpace || vdc_id) {
+         var searchfor = vdc_id || $scope.currentSpace.id;
+         currentCloudSpaceFromList = _.find($scope.cloudspaces, function(cloudspace) {
+           return cloudspace.id === searchfor;
+         });
       }
       if (!currentCloudSpaceFromList) {
         currentCloudSpaceFromList = _.first($scope.cloudspaces);
