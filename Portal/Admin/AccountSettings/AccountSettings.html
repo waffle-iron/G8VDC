@@ -13,7 +13,7 @@
               <th class="username-text-container">
                   <div id="szn-autocomplete-wrap">
                       <!-- <div class="bg form-control"></div> -->
-                      <input id="searchQuery" ng-model="searchQuery" szn-autocomplete="autocompleteOptions" placeholder="Search usernames or invite by email..." />
+                      <input id="searchQuery" ng-model="searchQuery" szn-autocomplete="autocompleteOptions" placeholder="Search usernames..." />
                       <i class="fa fa-times btn-reset-email" ng-show="searchQuery.length" ng-click="resetSearchQuery()">
                       </i>
                   </div>
@@ -27,9 +27,9 @@
                   <button ng-if="!emailMode" type="submit" class="btn" ng-click="addUser()" ng-disabled="!searchQuery.length">
                       Add
                   </button>
-                  <button ng-if="emailMode" type="submit" class="btn" ng-click="inviteUser()">
+                  <!-- <button ng-if="emailMode" type="submit" class="btn" ng-click="inviteUser()">
                       Invite
-                  </button>
+                  </button> -->
               </th>
           </tr>
           <tr ng-cloak ng-repeat="user in currentAccount.userRightsOnAccount">
