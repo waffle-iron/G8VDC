@@ -13,7 +13,6 @@
     $scope.resetSearchQuery = resetSearchQuery;
     $scope.loadMachineAcl = loadMachineAcl;
     $scope.addUser = addUser;
-    $scope.inviteUser = inviteUser;
     $scope.deleteUser = deleteUser;
     $scope.loadEditUser = loadEditUser;
     // autocomplete configuration object
@@ -120,36 +119,6 @@
           });
         }
       }
-    }
-
-    function inviteUser() {
-      var alreadyInvited = _.find($scope.machine.acl, function(acl) {
-        return acl.userGroupId === $scope.newUser.nameOrEmail;
-      });
-
-      if (alreadyInvited) {
-        userMessage($scope.newUser.nameOrEmail + ' already invited', 'danger', false);
-        return;
-      }
-
-      Machine
-      .inviteUser($scope.machine.id, $scope.newUser.nameOrEmail, $scope.newUser.access)
-      .then(function() {
-        $scope.machine.acl.push({
-          type: 'U',
-          guid: '',
-          right: $scope.newUser.access,
-          userGroupId: $scope.newUser.nameOrEmail,
-          canBeDeleted: true,
-          status: 'INVITED'
-        });
-
-        $scope.orderUsers();
-        $scope.resetSearchQuery();
-        userMessage('Invitation sent successfully to ' + $scope.newUser.nameOrEmail , 'success');
-      }, function(response) {
-        userMessage(response.data, 'danger', false);
-      });
     }
 
     function deleteUser(machineId, user, userCanBeDeleted) {
@@ -259,27 +228,6 @@
         var emailInvited = _.find($scope.machine.acl, function(user) {
           return user.userGroupId === query;
         });
-
-        if (results.length === 0 && validateEmail(query) && !emailInvited) {
-          results.push({
-            value: query,
-            validEmail: true
-          });
-        } else if (results.length === 0) {
-          if (emailInvited) {
-            results.push({
-              value: '(' + query + ') already invited.',
-              validEmail: false,
-              selectable: false
-            });
-          } else {
-            results.push({
-              value: 'Enter an email to invite...',
-              validEmail: false,
-              selectable: false
-            });
-          }
-        }
 
         // resolve the deferred object
         deferred.resolve({results: results});

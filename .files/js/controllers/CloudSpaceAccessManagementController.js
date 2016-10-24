@@ -13,7 +13,6 @@
     $scope.loadSpaceAcl = loadSpaceAcl;
     $scope.userError = false;
     $scope.addUser = addUser;
-    $scope.inviteUser = inviteUser;
     $scope.deleteUser = deleteUser;
     $scope.loadEditUser = loadEditUser;
     $scope.resetSearchQuery = resetSearchQuery;
@@ -103,30 +102,6 @@
           });
         }
       }
-    }
-    function inviteUser() {
-      var alreadyInvited = _.find($scope.currentSpace.acl, function(acl) {
-        return acl.userGroupId === $scope.newUser.nameOrEmail;
-      });
-
-      if (alreadyInvited) {
-        userMessage($scope.newUser.nameOrEmail + ' already invited', 'danger', false);
-        return;
-      }
-
-      CloudSpace
-      .inviteUser($scope.currentSpace, $scope.newUser.nameOrEmail, $scope.newUser.access)
-      .then(function() {
-        userMessage('Invitation sent successfully to ' + $scope.newUser.nameOrEmail , 'success');
-
-        $scope.loadSpaceAcl()
-        .then(function() {
-          $scope.resetUser();
-          $scope.resetSearchQuery();
-        });
-      }, function(response) {
-        userMessage(response.data, 'danger', false);
-      });
     }
     function deleteUser(space, user) {
       if (user.canBeDeleted !== true) {
@@ -235,27 +210,6 @@
         var emailInvited = _.find($scope.currentSpace.acl, function(user) {
           return user.userGroupId === query;
         });
-
-        if (results.length === 0 && validateEmail(query) && !emailInvited) {
-          results.push({
-            value: query,
-            validEmail: true
-          });
-        } else if (results.length === 0) {
-          if (emailInvited) {
-            results.push({
-              value: '(' + query + ') already invited.',
-              validEmail: false,
-              selectable: false
-            });
-          } else {
-            results.push({
-              value: 'Enter an email to invite...',
-              validEmail: false,
-              selectable: false
-            });
-          }
-        }
 
         // resolve the deferred object
         deferred.resolve({results: results});
