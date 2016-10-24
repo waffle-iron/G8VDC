@@ -9,12 +9,10 @@
     $scope.shareAccountMessage = false;
     $scope.accessTypes = Account.accountAccessRights();
     $scope.resetUser = resetUser;
-    // $scope.resetSearchQuery = resetSearchQuery;
     $scope.loadAccountAcl = loadAccountAcl;
 
     $scope.userError = false;
     $scope.addUser = addUser;
-    // $scope.inviteUser = inviteUser;
     $scope.deleteUser = deleteUser;
     $scope.loadEditUser = loadEditUser;
     $scope.orderUsers = orderUsers;
@@ -141,33 +139,6 @@
         }
       }
     }
-    // function inviteUser() {
-    //   var alreadyInvited = _.find($scope.currentAccount.userRightsOnAccount, function(user) {
-    //     return user.userGroupId === $scope.newUser.nameOrEmail;
-    //   });
-    //
-    //   if (alreadyInvited) {
-    //     userMessage($scope.newUser.nameOrEmail + ' already invited', 'danger', false);
-    //     return;
-    //   }
-    //
-    //   Account
-    //   .inviteUser($scope.currentAccount.id, $scope.newUser.nameOrEmail, $scope.newUser.access)
-    //   .then(function() {
-    //     $scope.currentAccount.userRightsOnAccount.push({
-    //       right: $scope.newUser.access,
-    //       userGroupId: $scope.newUser.nameOrEmail,
-    //       //canBeDeleted: true,
-    //       status: 'INVITED'
-    //     });
-    //
-    //     $scope.orderUsers();
-    //     $scope.resetSearchQuery();
-    //     userMessage('Invitation sent successfully to ' + $scope.newUser.nameOrEmail , 'success');
-    //   }, function(response) {
-    //     userMessage(response.data, 'danger', false);
-    //   });
-    // }
     function deleteUser(user) {
       if (user.canBeDeleted !== true) {
         return false;
@@ -279,28 +250,6 @@
         var emailInvited = _.find($scope.currentAccount.userRightsOnAccount, function(user) {
           return user.userGroupId === query;
         });
-
-        // if (results.length === 0 && validateEmail(query) && !emailInvited) {
-        //   results.push({
-        //     value: query,
-        //     validEmail: true
-        //   });
-        // } else if (results.length === 0) {
-        //   if (emailInvited) {
-        //     results.push({
-        //       value: '(' + query + ') already invited.',
-        //       validEmail: false,
-        //       selectable: false
-        //     });
-        //   }
-        //   else {
-        //     results.push({
-        //       value: 'Enter an email to invite...',
-        //       validEmail: false,
-        //       selectable: false
-        //     });
-        //   }
-        // }
 
         // resolve the deferred object
         deferred.resolve({results: results});
