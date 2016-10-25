@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/0-complexity/G8VDC.png?label=ready&title=Ready)](https://waffle.io/0-complexity/G8VDC)
 ## VDC Control Panel
 
 The VDC Control Panel provides a web panel to manage a virtual datacenter.
